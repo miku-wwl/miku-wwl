@@ -18,4 +18,4 @@ Here are some ideas to get you started:
 About me:<img align="right" src="https://github-readme-stats.vercel.app/api?username=miku-wwl&show_icons=true">
 
 - 🌱 Currently refining backend skills.
-- 🤔 https://github.com/miku-wwl/we_debug -- Summary of java troubleshooting, updated frequently.
+- 🤔 https://github.com/miku-wwl/we_debug -- wiki for java troubleshooting, updated frequently.
