@@ -1,0 +1,99 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+% !Mode:: "TeX:UTF-8"
+
+\documentclass{resume}
+\usepackage{zh_CN-Adobefonts_external} % Simplified Chinese Support using external fonts (./fonts/zh_CN-Adobe/)
+%\usepackage{zh_CN-Adobefonts_internal} % Simplified Chinese Support using system fonts
+\usepackage{linespacing_fix} % disable extra space before next section
+\usepackage{cite}
+
+\begin{document}
+\pagenumbering{gobble} % suppress displaying page number
+
+\name{Weilai Wang}
+
+\basicInfo{
+  \email{weilai.ire@outlook.com} \textperiodcentered\ 
+  \phone{(+86)  15195863766} \textperiodcentered\ 
+}
+
+\basicInfo{
+  \github{https://github.com/miku-wwl}
+  \linkedin[weilai-wang]{https://www.linkedin.com/in/weilai-wang-580aa9202}
+}
+
+\section{\faCloud\ 个人简介}
+\begin{itemize}[parsep=0.5ex, leftmargin=*]
+  \item 具有3年java开发经验, 熟悉Spring Boot/Spring Cloud 生态，熟练掌握mysql、postsql、redis。
+  \item 具有高吞吐低延时的亚毫秒级金融消息组件Aeron经验、熟悉rocketMq, thrift。
+  \item 掌握 Docker/Kubernetes 容器化技术，熟练构建 CI/CD 流水线。具备 K8s 集群管理经验，熟悉服务网格（Istio）、熟悉Helm/KustomizeHelm 多环境（Dev/Test/Prod）配置管理
+  \item  熟练运用 Arthas、jcmd 等 JVM 诊断工具 、结合 tcpdump/Wireshark、distributing trace tool(jaeger), 快速的定位分布式系统故障
+  \item 有react/nextjs 开发经验, 能在senior frontend engineers 的指导下，开发前端代码。
+  \item English skills: PTE 2025 Listening 64, Speaking 54, Reading 74, Writing 75
+\end{itemize}
+
+
+
+\section{\faGraduationCap\  教育背景}
+\datedsubsection{\textbf{悉尼科技大学}}{2020 -- 2021}
+\textit{硕士  }\   软件系统工程
+\datedsubsection{\textbf{南京航空航天大学}}{2019 -- 2020}
+\textit{荣誉学士  }\   一等荣誉理学学士(信息技术)
+\datedsubsection{\textbf{南京航空航天大学}}{2016 -- 2020}
+\textit{本科  }\   软件工程
+
+
+
+
+
+\section{\faUsers\ 项目经历}
+
+\datedsubsection{\textbf{Order Matching System}}{}
+\role{技术栈}{springboot、cloudnative/k8s、Aeron cluster、Aeron mdc、 vertx、disruptor、Simple Binary Encoding、Rocketmq}
+地址 https://github.com/miku-wwl/we\_matching
+\begin{onehalfspacing}
+\begin{itemize}
+  \item 基于开源的简单金融交易所撮合系统开发/Development of a Financial Exchange Matching System Based on simple Open Source project
+  \item 删除前端vue模块
+  \item 使用springboot重构 counter、gateway、sequencer、matching 模块
+  \item spring data jpa重构mybatis
+  \item kubernetes容器化部署counter、gateway、sequencer模块
+  \item Aeron mdc 重构vertx 组播, Aeron cluster 复制状态机构建 高可用高吞吐的matching 集群。 Building a Highly Available and High-Throughput Matching Cluster with Replicated State Machines
+  \item RocketMq 重构vertx-mqtt行情推送服务。
+\end{itemize}
+\end{onehalfspacing}
+
+
+\datedsubsection{\textbf{Image Hosting website} }{}
+\role{技术栈}{react、Next.js、Amazon S3 Api、drizzle orm、oauth2、Dockerfile、Alibaba Cloud Container Registry}
+地址 https://github.com/miku-wwl/we\_image
+\begin{itemize}
+  \item Next.js的学习项目. 实现了基础的图片托管功能. 基于 Amazon S3 API 实现图片存储与访问，删除. 
+  \item 设计了Dockerfile文件，用以快速的部署。
+\end{itemize}
+
+
+
+
+
+% Reference Test
+%\datedsubsection{\textbf{Paper Title\cite{zaharia2012resilient}}}{May. 2015}
+%An xxx optimized for xxx\cite{verma2015large}
+%\begin{itemize}
+%  \item main contribution
+%\end{itemize}
+
+\section{\faCogs\ IT 技能}
+% increase linespacing [parsep=0.5ex]
+\begin{itemize}[parsep=0.5ex]
+  \item 编程语言: C == Python > C++ > Java
+  \item 平台: Linux
+  \item 开发: xxx
+\end{itemize}
+
+%% Reference
+%\newpage
+%\bibliographystyle{IEEETran}
+%\bibliography{mycite}
+\end{document}
