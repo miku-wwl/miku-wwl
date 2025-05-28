@@ -20,17 +20,18 @@
 
 \basicInfo{
   \github{https://github.com/miku-wwl}
-  \linkedin[weilai-wang]{https://www.linkedin.com/in/weilai-wang-580aa9202}
+  \linkedin[weilai-wang]{https://www.linkedin.com/in/weilai-wang-9b34a2368}
 }
 
 \section{\faCloud\ 个人简介}
 \begin{itemize}[parsep=0.5ex, leftmargin=*]
   \item 具有3年java开发经验, 熟悉Spring Boot/Spring Cloud 生态，熟练掌握mysql、postsql、redis。
-  \item 具有高吞吐低延时的亚毫秒级金融消息组件Aeron经验、熟悉rocketMq, thrift。
-  \item 掌握 Docker/Kubernetes 容器化技术，熟练构建 CI/CD 流水线。具备 K8s 集群管理经验，熟悉服务网格（Istio）、熟悉Helm/KustomizeHelm 多环境（Dev/Test/Prod）配置管理
+  \item 具有高吞吐低延时的亚毫秒级金融消息组件Aeron开发经验、熟悉rocketMq, thrift。
+  \item 掌握 Docker/Kubernetes 容器化技术，熟练构建 CI/CD 流水线。具备 K8s 集群管理经验，熟悉服务网格（Istio）、熟悉Helm/Kustomize 多环境（Dev/Test/Prod）配置管理
   \item  熟练运用 Arthas、jcmd 等 JVM 诊断工具 、结合 tcpdump/Wireshark、distributing trace tool(jaeger), 快速的定位分布式系统故障
   \item 有react/nextjs 开发经验, 能在senior frontend engineers 的指导下，开发前端代码。
   \item English skills: PTE 2025 Listening 64, Speaking 54, Reading 74, Writing 75
+  \item 有学习第二外语的意愿 
 \end{itemize}
 
 
@@ -38,14 +39,44 @@
 \section{\faGraduationCap\  教育背景}
 \datedsubsection{\textbf{悉尼科技大学}}{2020 -- 2021}
 \textit{硕士  }\   软件系统工程
-\datedsubsection{\textbf{南京航空航天大学}}{2019 -- 2020}
+\datedsubsection{\textbf{悉尼科技大学}}{2019 -- 2020}
 \textit{荣誉学士  }\   一等荣誉理学学士(信息技术)
 \datedsubsection{\textbf{南京航空航天大学}}{2016 -- 2020}
 \textit{本科  }\   软件工程
 
+\section{\faCogs\ IT 技能}
+% increase linespacing [parsep=0.5ex]
+\begin{itemize}[parsep=0.5ex]
+  \item Java、Go、Python、Node.js、Springboot、Springcloud、Docker、Kubernetes、Service Mesh(istio) \\
+  Spring data jpa、mysql、in-memory database、 rocketMq、 Amazon S3 Api、
+  Prometheus、Loki、Jaeger \\ Linux Shell、GitHub、jira \\  
+\end{itemize}
 
 
+\section{\faBriefcase\ 工作经历}
 
+\datedsubsection{\textbf{华为技术有限公司-集群计算网络开发部-2021.11-至今}}{}
+
+\begin{onehalfspacing}
+\role{技术栈}{Springboot、kubernetes、 MessageQueue、Thrift、in-memory database、 Project management tools\\
+distributed logging/metrics/tracing}
+\begin{itemize}
+  \item 基于SpringBoot + k8s集群构建高性能交换软件的配置管理，监控采集服务，策略引擎的核心微服务。使用Thrift IDC定义服务间通信接口规范，实现 Thrift 服务与内存数据库的数据同步机制。定位与解决测试、监控告警系统提出的问题工单与CI问题。
+  \item 组织 Agile 开发团队完成功能设计与需求交付，主持每日站会，需求交付、月度复盘、闭环代码review 意见，闭环问题工单。
+  \item 组织开发与测试团队评审系统测试测试用例，确保需求交付并通过 单元测试、功能测试、性能测试、安全四重验证。
+  \item 独立完成 100+ story requirement 的设计与开发。累计提前发现代码缺陷150+, 处理问题工单300+。 
+\end{itemize}
+\end{onehalfspacing}
+
+
+\datedsubsection{\textbf{OKX(原OKEX)-实习-2021.7-2021.10} }{}
+\role{技术栈}{Springboot、Springcloud、Aeron Archieve、disruptor、Simple Binary Encoding、Rocketmq、jira}
+\begin{itemize}
+  \item 练习使用Aeron Archive为撮合引擎提供消息存储和回放功能, 用于审计和故障检测，推送撮合结果至行情推送服务. 
+  \item 实习期间, 理解Springcloud框架, 掌握基本的Java开发，Maven构建，分布式微服务问题调试能力。
+\end{itemize}
+
+ 
 
 \section{\faUsers\ 项目经历}
 
@@ -84,13 +115,7 @@
 %  \item main contribution
 %\end{itemize}
 
-\section{\faCogs\ IT 技能}
-% increase linespacing [parsep=0.5ex]
-\begin{itemize}[parsep=0.5ex]
-  \item 编程语言: C == Python > C++ > Java
-  \item 平台: Linux
-  \item 开发: xxx
-\end{itemize}
+
 
 %% Reference
 %\newpage
