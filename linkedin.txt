@@ -1,0 +1,265 @@
+linkedin
+
+Weilai Wang 
+Huawei-Java Software Engineer
+
+Huawei
+
+University of Technology Sydney
+Beijing, China  Contact info
+
+Contact Info
+Your Profile
+linkedin.com/in/weilai-wang-580aa9202
+Phone
++86 15195863766 (Mobile)
+Address
+Haidian District, Beijing, China
+Email
+weilai.ire@outlook.com
+Birthday
+October 20
+
+* Indicates required
+
+Job titles Required
+
+Java Software Engineer
+
+Add title
+Location types Required
+
+On-site
+ 
+Hybrid
+ 
+Remote
+Locations (on-site) Required
+
+Ireland
+
+Add location
+Start date
+
+Immediately, I am actively applying
+
+Flexible, I am casually looking
+Employment types
+
+Full-time
+ 
+Part-time
+ 
+Contract
+ 
+Internship
+ 
+Temporary
+Visibility (who can view you’re open to work) Required
+
+Recruiters only
+Limited to people using LinkedIn Recruiter
+While we take steps not to show recruiters at your current company, we can’t guarantee complete privacy.
+
+
+
+All LinkedIn members
+Includes recruiters and people at your current company
+This selection adds the #OpenToWork photo frame.
+
+
+
+Learn more about your privacy
+
+
+
+Edit about
+
+English (Primary profile)
+
+Chinese (Simplified)
+You can write about your years of experience, industry, or skills. People also talk about their achievements or previous job experiences.
+Currently live in mainland China.
+English skills: PTE 2025 Listening 64, Speaking 54, Reading 74, Writing 75
+
+With three years of Java development experience, proficient with SpringBoot, SpringCloud, MySQL, NoSQL, and Message Queue development methods.
+
+Write with AI
+252/2,600
+2600 maximum characters allowed.
+
+Skills
+Show your top skills — add up to 5 skills you want to be known for. They’ll also appear in your Skills section.
+
+
+Add skill
+Dismiss suggestions Suggested based on your profile
+Suggested based on your profile
+Suggested based on your profile
+Java
+ 
+Docker Products
+ 
+Spring Boot
+ 
+Elasticsearch
+ 
+MySQL
+
+
+Edit about
+
+English (Primary profile)
+
+Chinese (Simplified)
+You can write about your years of experience, industry, or skills. People also talk about their achievements or previous job experiences.
+Currently live in mainland China.
+
+With three years of Java development experience, proficient with SpringBoot, SpringCloud, MySQL, NoSQL, and Message Queue development methods.
+
+Write with AI
+Currently live in mainland China. English skills: PTE 2025 Listening 64, Speaking 54, Reading 74, Writing 75 With three years of Java development experience, proficient with SpringBoot, SpringCloud, MySQL, NoSQL, and Message Queue development methods.
+
+177/2,600
+2600 maximum characters allowed.
+
+Skills
+Show your top skills — add up to 5 skills you want to be known for. They’ll also appear in your Skills section.
+
+
+Add skill
+Dismiss suggestions Suggested based on your profile
+Suggested based on your profile
+Suggested based on your profile
+Java
+ 
+Docker Products
+ 
+Spring Boot
+ 
+Elasticsearch
+ 
+MySQL
+
+
+
+Huawei logo
+Java Software Engineer
+Java Software Engineer
+Huawei · Full-timeHuawei · Full-time
+Dec 2021 - Present · 3 yrs 6 mosDec 2021 to Present · 3 yrs 6 mos
+Beijing, China · On-siteBeijing, China · On-site
+A frontline developer with extensive experience in problem localization, focusing on the development of forwarding services for cluster computing switch software. The technology stack includes Lua, Spring Boot, high-performance message middleware, in-memory database, and collaboration with the Linux SDK team.
+
+Code is developed locally and packaged into an image for verification using CI/CD.
+A frontline developer with extensive experience in problem localization, focusing on the development of forwarding services for cluster computing switch software. The technology stack includes Lua, Spring Boot, high-performance message middleware, in-memory database, and collaboration with the Linux SDK team. Code is developed locally and packaged into an image for verification using CI/CD.
+Skills: Spring Boot · MySQL · In-memory Database · Message Queue · Lua · Docker · Continuous Integration and Continuous Delivery (CI/CD)
+Skills: Spring Boot · MySQL · In-memory Database · Message Queue · Lua · Docker · Continuous Integration and Continuous Delivery (CI/CD)
+OKX logo
+Java Software Engineer
+Java Software Engineer
+OKX · InternshipOKX · Internship
+Jul 2021 - Nov 2021 · 5 mosJul 2021 to Nov 2021 · 5 mos
+Beijing, China · On-siteBeijing, China · On-site
+As a Java development intern at OKX (formerly OKEx), I work on the matching system. My responsibilities include:
+
+Learning and implementing Event-Driven Architecture.
+Gaining experience with high-performance messaging using Aeron.
+Contributing to the development of an embedded KV database in Java.
+Writing unit and performance tests for existing modules.
+As a Java development intern at OKX (formerly OKEx), I work on the matching system. My responsibilities include: Learning and implementing Event-Driven Architecture. Gaining experience with high-performance messaging using Aeron. Contributing to the development of an embedded KV database in Java. Writing unit and performance tests for existing modules.
+Skills: Efficient reliable message transport - Aeron
+
+
+
+
+
+Education
+University of Technology Sydney logo
+University of Technology Sydney
+University of Technology Sydney
+Master of Engineering, Software System EngineeringMaster of Engineering, Software System Engineering
+2020 - 20212020 - 2021
+University of Technology Sydney logo
+University of Technology Sydney
+University of Technology Sydney
+Bachelor's degree, Bachelor of Science (Honours) in Information TechnologyBachelor's degree, Bachelor of Science (Honours) in Information Technology
+Jul 2019 - Jul 2020Jul 2019 - Jul 2020
+Nanjing University of Aeronautics and Astronautics logo
+Nanjing University of Aeronautics and Astronautics
+Nanjing University of Aeronautics and Astronautics
+Bachelor's degree, Software EngineeringBachelor's degree, Software Engineering
+Sep 2016 - Oct 2020
+
+
+ProjectsProjects
+https://github.com/miku-wwl
+https://github.com/miku-wwl
+Here is my GitHub profile address. I will add the project address later.
+
+
+
+
+Skills
+
+All
+Industry Knowledge
+Tools & Technologies
+Java
+Java
+Spring Boot
+Spring Boot
+Company logo
+Java Software Engineer at HuaweiJava Software Engineer at Huawei
+MySQL
+MySQL
+Company logo
+Java Software Engineer at HuaweiJava Software Engineer at Huawei
+Redis
+Redis
+Message Queue
+Message Queue
+Company logo
+Java Software Engineer at HuaweiJava Software Engineer at Huawei
+In-memory Database
+In-memory Database
+Company logo
+Java Software Engineer at HuaweiJava Software Engineer at Huawei
+持续集成和持续交付 (CI/CD)
+持续集成和持续交付 (CI/CD)
+后端开发
+后端开发
+Continuous Integration and Continuous Delivery (CI/CD)
+Continuous Integration and Continuous Delivery (CI/CD)
+Company logo
+Java Software Engineer at HuaweiJava Software Engineer at Huawei
+Efficient reliable message transport - Aeron
+Efficient reliable message transport - Aeron
+Company logo
+Java Software Engineer at OKXJava Software Engineer at OKX
+消息队列
+消息队列
+Elasticsearch
+Elasticsearch
+nosql
+nosql
+Docker
+Docker
+Company logo
+Java Software Engineer at HuaweiJava Software Engineer at Huawei
+Lua
+Lua
+Company logo
+Java Software Engineer at Huawei
+
+
+
+
+LanguagesLanguages
+English
+English
+Professional working proficiency
+
+
+
+
