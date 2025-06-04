@@ -46,7 +46,7 @@
 % increase linespacing [parsep=0.5ex]
 \begin{itemize}[parsep=0.5ex]
   \item Java, Node.js, Spring Boot, Spring Cloud, Docker, Kubernetes, Service Mesh (Istio) \\
-  Spring Data JPA, MySQL, in-memory database, Aeron, disruptor, RocketMQ, Amazon S3 Api, \\
+  Spring Data JPA, MySQL, in-memory database, Aeron, disruptor, RocketMQ, Amazon S3 Api, maven\\
   Prometheus, Loki, Jaeger \\  
     \item Proficient English skills: PTE(2025) Listening 64, Speaking 54, Reading 74, Writing 75. \\
     \item Willing to learn a second foreign language. \\
