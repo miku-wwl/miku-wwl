@@ -85,7 +85,7 @@
 
 \section{\faUsers\ Project Experience}
 
-\datedsubsection{\textbf{Order Matching System}}{}
+\datedsubsection{\textbf{Exchange Matching System}}{}
 \role{Technical Stack:}{Spring Boot, Cloud Native/Kubernetes, Aeron Cluster, Aeron MDC, Vert.x, Disruptor, Simple Binary Encoding, RocketMQ}
 Address: https://github.com/miku-wwl/we\_matching
 \begin{onehalfspacing}
