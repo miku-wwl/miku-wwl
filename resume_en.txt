@@ -25,51 +25,57 @@
 
 \section{\faCloud\ Professional Profile}
 \begin{itemize}[parsep=0.5ex, leftmargin=*]
-  \item 3 years of Java development experience, familiar with Spring Boot/Spring Cloud ecosystem, proficient in MySQL, PostgreSQL, and Redis.
-  \item Experience in developing sub-millisecond financial messaging components Aeron with high throughput and low latency, familiar with RocketMQ and Thrift.
-  \item Proficient in Docker/Kubernetes containerization technologies, skilled in building CI/CD pipelines. Have K8s cluster management experience, familiar with service mesh (Istio), and Helm/Kustomize multi-environment (Dev/Test/Prod) configuration management.
+  \item 4 years of Java development experience, familiar with Spring Boot/Spring Cloud ecosystem, familiar with node.js, proficient in MySQL, PostgreSQL, and Redis.
+  \item Proficient in Docker\&Kubernetes, familiar with CI/CD pipelines. Have K8s cluster management experience, familiar with service mesh (Istio), and Helm/Kustomize.
+  \item Experience in sub-millisecond, high throughput and low latency fin-tech messaging middleware Aeron, familiar with RocketMQ and Thrift.1
   \item Skilled in using JVM diagnostic tools such as Arthas and jcmd, and quickly locate distributed system failures by combining tcpdump/Wireshark and distributed trace tools (jaeger).
-  \item Have React/Next.js development experience and can develop frontend code under the guidance of senior frontend engineers.
-  \item English skills: PTE 2025 Listening 64, Speaking 54, Reading 74, Writing 75.
-  \item Willing to learn a second foreign language.
+  \item Have React/Next.js development experience.
 \end{itemize}
 
 
 
 \section{\faGraduationCap\ Education Background}
-\datedsubsection{\textbf{University of Technology Sydney}}{2020 -- 2021}
+\datedsubsection{\textbf{University of Technology Sydney}}{07.2020 -- 08.2021}
 \textit{Master's Degree：  }\   Software Systems Engineering
-\datedsubsection{\textbf{University of Technology Sydney}}{2019 -- 2020}
+\datedsubsection{\textbf{University of Technology Sydney}}{07.2019 -- 07.2020}
 \textit{Honors‘ Degree：  }\   First-Class Honors of Science (Information Technology)
-\datedsubsection{\textbf{Nanjing University of Aeronautics and Astronautics}}{2016 -- 2020}
-\textit{Bachelor's Degree  }\   Software Engineering
+\datedsubsection{\textbf{Nanjing University of Aeronautics and Astronautics}}{09.2016 -- 10.2020}
+\textit{Bachelor's Degree:  }\   Software Engineering
 
-\section{\faCogs\ IT Skills}
+\section{\faCogs\ Skills}
 % increase linespacing [parsep=0.5ex]
 \begin{itemize}[parsep=0.5ex]
-  \item Java, Go, Python, Node.js, Spring Boot, Spring Cloud, Docker, Kubernetes, Service Mesh (Istio) \\
-  Spring Data JPA, MySQL, in-memory database, RocketMQ, Amazon S3 Api, \\
-  Prometheus, Loki, Jaeger,  Linux Shell, GitHub, Jira \\  
+  \item Java, Node.js, Spring Boot, Spring Cloud, Docker, Kubernetes, Service Mesh (Istio) \\
+  Spring Data JPA, MySQL, in-memory database, Aeron, disruptor, RocketMQ, Amazon S3 Api, \\
+  Prometheus, Loki, Jaeger \\  
+    \item Proficient English skills: PTE(2025) Listening 64, Speaking 54, Reading 74, Writing 75. \\
+    \item Willing to learn a second foreign language. \\
 \end{itemize}
 
 
 \section{\faBriefcase\ Work Experience}
 
-\datedsubsection{\textbf{Huawei Technologies Co., Ltd. - Cluster Computing Network Development Department - 2021.11 - Present}}{}
+\datedsubsection{\textbf{Huawei Technologies Co., Ltd. - Cluster Computing Network Development Department - 11.2021 - Present}}{}
 
 \begin{onehalfspacing}
-\role{Technical Stack:}{Spring Boot, Kubernetes, Message Queue, Thrift, in-memory database, Project management tools, distributed logging/metrics/tracing}
+\role{}{High-performance microservice architecture design and high-quality delivery of large-scale requirements}
 \begin{itemize}
-  \item Built core microservices for configuration management, monitoring collection services, and policy engines of high-performance switching software based on Spring Boot + Kubernetes clusters. Used Thrift IDC to define service communication interface specifications and implemented data synchronization mechanisms between Thrift services and in-memory databases. Located and solved problem tickets and CI issues raised by testing and monitoring alarm systems.
-  \item Organized Agile development teams to complete functional design and requirement delivery, presided over daily stand-up meetings, requirement delivery, monthly reviews, closed code review comments, and closed problem tickets.
-  \item Organized development and testing teams to review system test cases to ensure that requirements are delivered and pass four validations: unit testing, functional testing, performance testing, and security testing.
-  \item Independently completed the design and development of over 100 story requirements.Has proactively identified over 150 code defects in advance and handled over 300 problem tickets.
+  \item Design and implement core microservice clusters to support the configuration and monitoring requirements of thousand-level device access, ensuring the efficient delivery of 100+ complex story requirements in traffic shaping/congestion scheduling/host security/device port management, and controllable defect rates.
+  \item Spring Boot + Kubernetes is used to build a containerized microservice cluster to achieve automatic service scaling and load balancing.
+  \item Define cross-service communication interface specifications through Thrift IDC to synchronize data between Thrift services and in-memory databases.
+  \item Use static code scanning tools to identify and fix 150+ potential code defects before they occur; Lead the analysis and resolution of 300+ problem tickets.
+\end{itemize}
+
+\role{}{Agile development team whole-process management and requirements delivery}
+\begin{itemize}
+  \item Multi-version parallel development, frequent iteration of requirements.
+  \item Lead daily stand-ups, use project management tools, manage requirements progress, review and review.
+  \item LCN switching software version 1.0 and 1.1 were successfully delivered.
 \end{itemize}
 \end{onehalfspacing}
 
 
-\datedsubsection{\textbf{OKX (Formerly OKEX) - Internship - 2021.7 - 2021.10} }{}
-\role{Technical Stack:}{Spring Boot, Spring Cloud, Aeron Archive, Disruptor, Simple Binary Encoding, RocketMQ, Jira}
+\datedsubsection{\textbf{OKX (Formerly OKEX) - Internship - 7.2021 - 10.2021} }{}
 \begin{itemize}
   \item Practiced using Aeron Archive to provide message storage and replay functions for the matching engine, used for auditing and fault detection, and pushed matching results to the market data push service.
   \item During the internship, understood the Spring Cloud framework, mastered basic Java development, Maven build, and distributed microservice problem debugging capabilities.
