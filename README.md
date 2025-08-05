@@ -19,3 +19,4 @@ About me:<img align="right" src="https://github-readme-stats.vercel.app/api?user
 
 - 🌱 Currently refining backend skills.
 - 🤔 https://github.com/miku-wwl/we_debug -- wiki for java troubleshooting, updated frequently.
+- 😄 My portfolio: https://github.com/miku-wwl/we_portfolio
