@@ -2,4 +2,4 @@ Nestjs https://github.com/miku-wwl/we_nestjs/blob/main/nest-wiki.md
 K8s&Docker https://github.com/miku-wwl/we_k8s/tree/main/k8s https://github.com/miku-wwl/we_k8s/tree/main/docker
 Aeron(Efficient reliable UDP unicast&multicast, and IPC message transport) https://github.com/miku-wwl/we_aeron/tree/main/src/main/java/com/weilai/aeron
 Troubleshooting https://github.com/miku-wwl/we_debug
-other documents https://github.com/miku-wwl/we_notes
+Springboot and others https://github.com/miku-wwl/we_notes
