@@ -15,8 +15,27 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 
-About me:<img align="right" src="https://github-readme-stats.vercel.app/api?username=miku-wwl&show_icons=true">
+# Weilai Wang
 
-- 🌱 Currently refining backend skills.
-- 🤔 https://github.com/miku-wwl/we_debug -- wiki for java troubleshooting, updated frequently.
-- 😄 My portfolio: https://github.com/miku-wwl/we_portfolio
+Cloud Architect • Platform Engineer • SRE
+
+Building reliable Kubernetes platforms on Azure and AWS.
+
+## Focus
+
+AKS • EKS • Terraform • OpenTelemetry • GitOps • Platform Engineering
+
+## Certifications
+
+- AWS Certified Solutions Architect – Professional (SAP-C02)
+
+## Current Projects
+
+- Multi-Cloud AKS/EKS Platform
+- OpenTelemetry Observability Lab
+- Kubernetes Node Image Factory
+- SRE Failure Modelling Scenarios
+
+## Interests
+
+FinOps • Cloud Governance • Reliability Engineering
