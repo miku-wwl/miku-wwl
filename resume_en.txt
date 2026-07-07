@@ -25,52 +25,31 @@
 
 \section{\faCloud\ Professional Profile}
 \begin{itemize}[parsep=0.5ex, leftmargin=*]
-  \item Master of Software Engineering student in New Zealand, expected to graduate in April 2027, with 4.5 years of software engineering experience at Huawei.
-  \item Completed a Java internship in the core matching system team at OKX, a major cryptocurrency exchange, with exposure to high-performance backend systems.
-  \item Backend-focused software engineer with strong interests in distributed systems, cloud-native architecture, reliable production services, and platform engineering.
-  \item Recently focusing on Cloud SRE and Platform Engineering through AWS, Azure, Kubernetes, Terraform, CI/CD, observability, monitoring, and incident analysis.
+  \item Auckland-based Master of Software Engineering student, expected to graduate in April 2027, with 4+ years of professional software engineering experience, including 4 years at Huawei and backend internship experience at OKX.
+  \item Backend and platform-oriented engineer with experience in Java/Spring Boot microservices, Kubernetes-based services, distributed systems, event-driven architecture, production debugging, code review, and cross-team engineering delivery.
+  \item Practical cloud-native skill set covering AWS, Azure, Kubernetes, Terraform, CI/CD, observability, monitoring, root-cause analysis, and reliable infrastructure for production-oriented systems.
+  \item Currently undertaking intensive hands-on Terraform practice aligned with Terraform Authoring and Operations Professional, focusing on reusable modules, testing, automation, and production-style workflows.
 \end{itemize}
 
 \section{\faCertificate\ Certifications}
 \begin{itemize}[parsep=0.5ex, leftmargin=*]
   \item AWS Certified Solutions Architect -- Professional (AWS SAP)
-  \item Microsoft Certified: Azure Administrator Associate (AZ-104)
+  \item Microsoft Certified: Azure Solutions Architect Expert (AZ-104 + AZ-305)
   \item Certified Kubernetes Application Developer (CKAD)
   \item AWS Certified Developer -- Associate (AWS DVA)
 \end{itemize}
 
+\section{\faTrophy\ Awards \& Recognition}
+\begin{itemize}[parsep=0.5ex, leftmargin=*]
+  \item Spring 2026 Linux Foundation LiFT Scholarship Program Awardee -- Systems \& DevOps category.
+\end{itemize}
+
 \section{\faCogs\ Skills}
 \begin{itemize}[parsep=0.5ex, leftmargin=*]
-\item \textbf{Backend & Web:} Java, Spring Boot, Spring Cloud, Node.js, REST APIs, SQL, MySQL, PostgreSQL, Redis, JavaScript, TypeScript, React
-\item \textbf{Cloud & Platform:} AWS, Microsoft Azure, Docker, Kubernetes, Terraform, CI/CD, Git, Linux
-\item \textbf{Observability & Reliability:} Prometheus, Loki, Jaeger, monitoring, troubleshooting, root-cause analysis, incident analysis
-\item \textbf{Engineering Practices:} Unit testing, integration testing, code review, debugging, documentation, Agile/Scrum, cross-team collaboration
+\item \textbf{Backend \& Distributed Systems:} Java, Spring Boot, Spring Cloud, Node.js, REST APIs, SQL, PostgreSQL, MySQL, Redis, message queues, Aeron Archive, TypeScript, React
+\item \textbf{Platform Engineering:} Terraform, Docker, Kubernetes, Kustomize, GitHub Actions, CI/CD, Argo CD, Argo Rollouts, canary deployments
+\item \textbf{AWS \& Azure:} AWS IAM, VPC, EC2, S3, RDS, Lambda, CloudWatch; Azure VNet, AKS, Azure Monitor, Log Analytics
 \end{itemize}
-
-
-\section{\faUsers\ Selected Projects}
-
-\datedsubsection{\textbf{Cloud Governance X -- Cloud Governance and FinOps Platform}}{Ongoing | Early-stage implementation}
-\role{Implemented Stack:}{.NET 10, PostgreSQL, Terraform, GitHub Actions, Docker}
-\role{Planned Integrations:}{Azure SDK, Azure Resource Graph, Azure Cost Management, AWS Cost Explorer, React, OpenTelemetry}
-\begin{onehalfspacing}
-\begin{itemize}
-\item Building an early-stage cloud governance and FinOps platform designed for cloud resource inventory, cost visibility, ETL execution tracking, and production-oriented backend engineering.
-
-\item Implemented the initial .NET 10 backend foundation with Clean Architecture-style boundaries across API, Application, Domain, Infrastructure, Worker, Migrator, and automated test projects.
-
-\item Designed the core domain model and persistence foundation for cloud resources, cost records, ETL job runs, provider accounts, and governance-related metadata using PostgreSQL.
-
-\item Added a dedicated database Migrator project to manage schema evolution and support repeatable local and CI-based database initialization.
-
-\item Established engineering quality controls including PostgreSQL migration verification, architecture boundary tests, static repository checks, and GitHub Actions CI validation.
-
-\item Added Terraform-based infrastructure scaffolding to support repeatable cloud environment setup and future Azure resource provisioning.
-
-\item Planned next steps include Azure Resource Graph inventory collection, Azure Cost Management ingestion, AWS provider support, React frontend, RBAC, OpenTelemetry, alerting, production scheduling, and automated governance workflows.
-\end{itemize}
-\end{onehalfspacing}
-
 
 \section{\faBriefcase\ Work Experience}
 
@@ -78,24 +57,60 @@
 \role{}{Cluster Computing Network Development Department}
 \begin{onehalfspacing}
 \begin{itemize}
-\item Designed and implemented backend services for cluster switch systems, supporting configuration, monitoring, traffic shaping, congestion scheduling, host security, and device port management scenarios.
-\item Built and maintained Spring Boot-based microservices deployed on Kubernetes, improving service scalability, deployment consistency, and maintainability.
-\item Defined cross-service communication interfaces using Thrift IDL and synchronized data between distributed services and in-memory databases.
-\item Used static code scanning, debugging tools, logs, distributed tracing, and packet analysis tools to identify defects, troubleshoot issues, and support production-oriented reliability.
-\item Participated in Agile delivery, requirement analysis, code reviews, documentation, sprint planning, and cross-team collaboration with CLI and Linux SDK teams.
+\item Designed and implemented backend services for cluster network management systems, covering configuration, monitoring, traffic shaping, congestion scheduling, host security, and device port management scenarios.
+
+\item Built and maintained Spring Boot-based microservices deployed on Kubernetes, supporting scalable service delivery, consistent deployment workflows, and long-term maintainability.
+
+\item Defined cross-service communication interfaces using Thrift IDL and synchronized operational data between distributed services and in-memory data stores.
+
+\item Investigated defects and reliability issues using static code scanning, debugging tools, logs, distributed tracing, packet analysis, and production-oriented troubleshooting workflows.
+
+\item Participated in Agile delivery, requirement analysis, code reviews, technical documentation, sprint planning, and cross-team collaboration with CLI and Linux SDK teams.
 \end{itemize}
 \end{onehalfspacing}
 
 \datedsubsection{\textbf{OKX -- Java Software Engineer Intern}}{07.2021 -- 10.2021}
 \begin{onehalfspacing}
 \begin{itemize}
-\item Worked on a core matching system and gained hands-on experience with event-driven architecture and high-performance backend engineering.
-\item Practiced using Aeron Archive for message storage and replay, supporting auditing, fault detection, and market data push scenarios.
+\item Worked in a core matching system team and gained hands-on exposure to event-driven architecture, high-performance backend systems, and reliability-sensitive trading infrastructure.
+
+\item Worked with Aeron Archive concepts for message storage and replay, supporting auditing, fault detection, and market data distribution scenarios.
+
 \item Built practical experience in Java backend development, Maven builds, Spring Cloud concepts, distributed service debugging, and performance-oriented testing.
 \end{itemize}
 \end{onehalfspacing}
 
-\section{\faGraduationCap\ Education Background}
+\section{\faUsers\ Selected Projects}
+
+\datedsubsection{\textbf{Cloud Governance X -- Cloud Governance and FinOps Platform}}{Ongoing | Active development}
+
+\vspace{0.1em}
+\role{Implemented Stack:}{.NET 10, PostgreSQL, Terraform, GitHub Actions, Docker, Azure SDK, Azure Resource Graph, Azure Cost Management}
+\role{Planned Integrations:}{AWS Cost Explorer, React, OpenTelemetry, alerting, production scheduling}
+
+\vspace{-0.1em}
+\begin{onehalfspacing}
+\begin{itemize}[leftmargin=*, itemsep=0.35ex, topsep=0.3ex, parsep=0.2ex]
+\item Building a cloud governance and FinOps platform for cloud resource inventory, cost visibility, ETL execution tracking, and production-oriented backend engineering.
+
+\item Implemented a .NET 10 backend foundation using Clean Architecture-style boundaries across API, Application, Domain, Infrastructure, Worker, Migrator, and automated test projects.
+
+\item Built Azure resource inventory and cost ingestion foundations using Azure SDK, Azure Resource Graph, Azure Cost Management Query API, PostgreSQL repositories, and ETL job tracking.
+
+\item Designed the PostgreSQL persistence model for cloud resources, daily cost records, ETL job runs, provider accounts, tenant-aware data access, and governance-related metadata.
+
+\item Added a dedicated database Migrator project to support repeatable schema initialization, migration validation, idempotent reruns, and CI-based database checks.
+
+\item Established engineering quality controls including architecture boundary tests, repository static checks, migration verification, GitHub Actions CI, and Terraform validation.
+
+\item Added Terraform-based Azure infrastructure scaffolding for repeatable development environments, including resource group, storage account, Service Bus queue, governance tags, and optional Log Analytics.
+\end{itemize}
+\end{onehalfspacing}
+
+\section{\faGraduationCap\ Education}
+
+\datedsubsection{\textbf{Yoobee College of Creative Innovation}}{2026 -- Expected Apr. 2027}
+\textit{Master of Software Engineering} \hfill Auckland, New Zealand
 
 \datedsubsection{\textbf{University of Technology Sydney}}{07.2020 -- 08.2021}
 \textit{Master of Engineering:} Software Systems Engineering
@@ -103,11 +118,7 @@
 \datedsubsection{\textbf{University of Technology Sydney}}{07.2019 -- 07.2020}
 \textit{Bachelor of Science (Honours) in Information Technology:} First Class Honours
 
-
 \datedsubsection{\textbf{Nanjing University of Aeronautics and Astronautics}}{09.2016 -- 10.2020}
 \textit{Bachelor's Degree:} Software Engineering
-
-\datedsubsection{\textbf{Yoobee College of Creative Innovation}}{2026 -- Expected 2027}
-\textit{Master of Software Engineering} \hfill Auckland, New Zealand
 
 \end{document}
