@@ -27,6 +27,7 @@
 \begin{itemize}[parsep=0.5ex, leftmargin=*]
   \item Auckland-based Master of Software Engineering student, expected to graduate in April 2027, with 4+ years of professional software engineering experience, including 4 years at Huawei and backend internship experience at OKX.
   \item Backend and platform-oriented engineer with experience in Java/Spring Boot microservices, Kubernetes-based services, distributed systems, event-driven architecture, production debugging, code review, and cross-team engineering delivery.
+  \item Experience in highly reliable asynchronous financial event processing and replay-based recovery for OKX's low-latency matching engine, using Aeron, Aeron Archive, and Simple Binary Encoding (SBE).
   \item Practical cloud-native skill set covering AWS, Azure, Kubernetes, Terraform, CI/CD, observability, monitoring, root-cause analysis, and reliable infrastructure for production-oriented systems.
   \item Currently undertaking intensive hands-on Terraform practice aligned with Terraform Authoring and Operations Professional, focusing on reusable modules, testing, automation, and production-style workflows.
 \end{itemize}
