@@ -27,9 +27,8 @@
 \begin{itemize}[parsep=0.5ex, leftmargin=*]
   \item Auckland-based Master of Software Engineering student, expected to graduate in April 2027, with 4+ years of professional software engineering experience, including 4 years at Huawei and backend internship experience at OKX.
   \item Backend and platform-oriented engineer with experience in Java/Spring Boot microservices, Kubernetes-based services, distributed systems, event-driven architecture, production debugging, code review, and cross-team engineering delivery.
-  \item Experience in highly reliable asynchronous financial event processing and replay-based recovery for OKX's low-latency matching engine, using Aeron, Aeron Archive, and Simple Binary Encoding (SBE).
+  \item Hands-on experience with replay-based recovery for reconstructing trading state from persisted events after failures, complemented by an independently built Kubernetes-native replay orchestration reference implementation using RabbitMQ, KEDA autoscaling, and PostgreSQL lease/fencing-based atomic checkpoints.
   \item Practical cloud-native skill set covering AWS, Azure, Kubernetes, Terraform, CI/CD, observability, monitoring, root-cause analysis, and reliable infrastructure for production-oriented systems.
-  \item Currently undertaking intensive hands-on Terraform practice aligned with Terraform Authoring and Operations Professional, focusing on reusable modules, testing, automation, and production-style workflows.
 \end{itemize}
 
 \section{\faCertificate\ Certifications}
@@ -73,11 +72,11 @@
 \datedsubsection{\textbf{OKX -- Java Software Engineer Intern}}{07.2021 -- 10.2021}
 \begin{onehalfspacing}
 \begin{itemize}
-\item Worked in a core matching system team and gained hands-on exposure to event-driven architecture, high-performance backend systems, and reliability-sensitive trading infrastructure.
+\item Contributed to a core matching-system team working on event-driven, high-performance, and reliability-sensitive financial backend systems.
 
-\item Worked with Aeron Archive concepts for message storage and replay, supporting auditing, fault detection, and market data distribution scenarios.
+\item Worked with Aeron Archive-based message recording and replay to support state recovery, auditing, fault investigation, and downstream market data workflows.
 
-\item Built practical experience in Java backend development, Maven builds, Spring Cloud concepts, distributed service debugging, and performance-oriented testing.
+\item Developed and tested Java backend components using Maven and Spring Cloud, including distributed debugging and performance-oriented validation.
 \end{itemize}
 \end{onehalfspacing}
 
