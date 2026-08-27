@@ -1,6 +1,6 @@
 % !TEX TS-program = xelatex
 % !TEX encoding = UTF-8 Unicode
-% !Mode:: "TeX:UTF-8"
+% !Mode:: "TeX\:UTF-8"
 
 \documentclass{resume}
 \usepackage{zh_CN-Adobefonts_external} % Simplified Chinese Support using external fonts (./fonts/zh_CN-Adobe/)
@@ -14,7 +14,7 @@
 \name{Weilai Wang}
 
 \basicInfo{
-  \email{weilai.ire@outlook.com} \textperiodcentered\ 
+  \email{weilai.ire@outlook.com} \textperiodcentered\
   \phone{(+64) 29 027 48387}
 }
 
@@ -25,7 +25,7 @@
 
 \section{\faCloud\ Professional Profile}
 \begin{itemize}[parsep=0.5ex, leftmargin=*]
-  \item Software engineer with 4+ years of professional experience, including 4 years at Huawei and backend engineering experience at OKX, currently based in Auckland, New Zealand.
+  \item Currently completing a Master of Software Engineering in Auckland, with 4+ years of professional experience, including 4 years at Huawei and backend engineering experience at OKX. Available to work up to 40 hours per week from 16 November 2026.
   \item Backend and platform-oriented engineer with experience in Java/Spring Boot microservices, Kubernetes-based services, distributed systems, event-driven architecture, production debugging, code review, and cross-team engineering delivery.
   \item Hands-on experience with replay-based recovery for reconstructing trading state after failures, complemented by an independently built Kubernetes-native replay orchestration implementation using message queues and KEDA autoscaling.
   \item Practical cloud-native skill set covering AWS, Azure, Kubernetes, Terraform, CI/CD, observability, incident response, SLIs/SLOs, and reliability engineering.
@@ -103,9 +103,6 @@
 \end{itemize}
 \end{onehalfspacing}
 
-
-
-
 \section{\faGraduationCap\ Education}
 
 \datedsubsection{\textbf{Yoobee College of Creative Innovation}}{04.2026 -- 04.2027}
@@ -120,4 +117,4 @@
 \datedsubsection{\textbf{Nanjing University of Aeronautics and Astronautics}}{09.2016 -- 10.2020}
 \textit{Bachelor's Degree:} Software Engineering
 
-\end{document}   看看，是不是搞定了
+\end{document}
