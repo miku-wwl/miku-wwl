@@ -1,28 +1,29 @@
-# Agent Flight Recorder — Microsoft Agent-a-Thon 最终方案
+# Agent Flight Recorder — Microsoft Agent-a-Thon 最终方案 v2
 
 > **定位：Production Reliability for Microsoft Foundry Agents**  
 > **目标：冲击 Microsoft Agent-a-Thon Asia 区 Top 6**  
-> **核心原则：不做普通 Agent Demo，不做 AWS 项目的简单 Azure 移植，而是做真正的 Agent Reliability Platform。**
+> **核心原则：不做普通 Agent Demo，而是做真正的 Agent Reliability Platform。**
 
 ---
 
-## 1. 项目名称
+# 1. 项目名称
 
-# Agent Flight Recorder
+# **Agent Flight Recorder**
 
-### Detect, Diagnose and Contain Production AI Agent Failures
+### Detect, Diagnose, Contain and Safely Release Production AI Agents
 
 一句话：
 
-> **A production reliability layer for Microsoft Foundry agents that detects, diagnoses, and contains reasoning loops, tool timeouts, retry storms, and unsafe side effects.**
+> **A production reliability layer for Microsoft Foundry agents that detects, diagnoses, contains, and prevents production failures caused by reasoning loops, tool timeouts, retry storms, unsafe side effects, and bad agent releases.**
 
 项目不是：
 
-- Agent Observability Demo
-- Azure version of `strands-powertools-observability`
-- 普通聊天机器人
+- 普通 Agent Observability Demo
+- 聊天机器人
 - RAG Demo
 - 多 Agent 炫技 Demo
+- 普通 CI/CD Demo
+- 普通 Canary Deployment Demo
 
 项目真正定位：
 
@@ -30,150 +31,220 @@
 
 ---
 
-## 2. Inspiration
+# 2. 产品故事
 
-参考项目：
+传统应用发生故障时，SRE 可以依赖日志、指标、Tracing、限流、熔断、金丝雀发布和回滚。
 
-- Darshit Pandya — `strands-powertools-observability`
-- AWS Strands Agents
-- AWS Lambda Powertools
-- AWS X-Ray
-- CloudWatch Logs / Metrics / Dashboard
-
-但只借鉴核心思想：
+但 Production AI Agent 多了一层新的不确定性：
 
 ```text
-tool-level
-logs + traces + metrics
+LLM reasoning
+     ↓
+tool selection
+     ↓
+tool arguments
+     ↓
+retry decisions
+     ↓
+side effects
 ```
 
-最终实现全部重新设计为：
+Agent 可能：
 
 ```text
-Microsoft Foundry
-+
-OpenTelemetry
-+
-Application Insights
-+
-Agent Reliability Controls
-+
-Failure Injection
-+
-Automated RCA
+调用错误工具
+重复调用同一工具
+因为模糊结果陷入 reasoning loop
+因为 503 形成 retry storm
+执行未经授权的 side effect
+新 Agent 版本上线后行为退化
 ```
 
-不能简单 fork / port AWS 仓。
+所以 Agent Flight Recorder 解决两个阶段的问题：
+
+```text
+Before Production
+    ↓
+Evaluate
+    ↓
+Canary
+    ↓
+Reliability Gate
+    ↓
+Promote / Rollback
+
+
+During Production
+    ↓
+Detect
+    ↓
+Diagnose
+    ↓
+Contain
+```
+
+最终：
+
+> **Agent Flight Recorder protects agents both when they change and when they run.**
 
 ---
 
 # 3. 最终技术架构
 
 ```text
-                         ┌────────────────────┐
-                         │       User         │
-                         └─────────┬──────────┘
-                                   │
-                                   ▼
-                    ┌──────────────────────────┐
-                    │      Demo Web UI         │
-                    │                          │
-                    │ Chat                     │
-                    │ Fault Injection          │
-                    │ Incident Timeline        │
-                    │ Human Approval           │
-                    └────────────┬─────────────┘
-                                 │
-                                 ▼
-┌──────────────────── Microsoft Foundry ──────────────────────┐
-│                                                             │
-│             ┌─────────────────────────────────┐             │
-│             │      Cloud Operations Agent     │             │
-│             │         Hosted Agent            │             │
-│             │                                 │             │
-│             │   Microsoft Agent Framework     │             │
-│             └──────────────┬──────────────────┘             │
-│                            │                                │
-│                            ▼                                │
-│             ┌─────────────────────────────────┐             │
-│             │      Reliability Gateway        │             │
-│             │                                 │             │
-│             │ correlation_id                  │             │
-│             │ tool schema validation          │             │
-│             │ canonical args fingerprint      │             │
-│             │ retry budget                    │             │
-│             │ timeout budget                  │             │
-│             │ reasoning-loop detector         │             │
-│             │ policy enforcement              │             │
-│             │ approval validation             │             │
-│             │ idempotency                     │             │
-│             └──────────────┬──────────────────┘             │
-│                            │                                │
-│             ┌──────────────┼───────────────┐                │
-│             │              │               │                │
-│             ▼              ▼               ▼                │
-│     service_status   database_health  dns_resolution        │
-│                                                             │
-│                            │                                │
-│                            ▼                                │
-│                    restart_service()                        │
-│                     SIDE EFFECT                             │
-│                            │                                │
-│                   Human approval required                   │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
+                              ┌────────────────────┐
+                              │        User        │
+                              └─────────┬──────────┘
+                                        │
+                                        ▼
+                         ┌──────────────────────────┐
+                         │       Demo Web UI        │
+                         │                          │
+                         │ Chat                     │
+                         │ Fault Injection          │
+                         │ Incident Timeline        │
+                         │ Human Approval           │
+                         │ Release Status           │
+                         └────────────┬─────────────┘
+                                      │
+                                      ▼
+                         ┌──────────────────────────┐
+                         │ Azure API Management     │
+                         │                          │
+                         │ Session-aware Routing    │
+                         │ Stable / Canary Routing  │
+                         └────────────┬─────────────┘
+                                      │
+                           ┌──────────┴──────────┐
+                           │                     │
+                           ▼                     ▼
+                 ┌─────────────────┐   ┌─────────────────┐
+                 │ Stable Agent v1 │   │ Canary Agent v2 │
+                 │      95%        │   │       5%        │
+                 └────────┬────────┘   └────────┬────────┘
+                          │                     │
+                          └──────────┬──────────┘
+                                     │
+                                     ▼
+┌────────────────────── Microsoft Foundry ──────────────────────┐
+│                                                               │
+│               ┌─────────────────────────────────┐             │
+│               │      Cloud Operations Agent     │             │
+│               │         Hosted Agent            │             │
+│               │                                 │             │
+│               │    Microsoft Agent Framework    │             │
+│               └──────────────┬──────────────────┘             │
+│                              │                                │
+│                              ▼                                │
+│               ┌─────────────────────────────────┐             │
+│               │       Reliability Gateway       │             │
+│               │                                 │             │
+│               │ correlation_id                  │             │
+│               │ tool schema validation          │             │
+│               │ canonical args fingerprint      │             │
+│               │ retry budget                    │             │
+│               │ timeout budget                  │             │
+│               │ reasoning-loop detector         │             │
+│               │ deterministic policy            │             │
+│               │ approval validation             │             │
+│               │ idempotency                     │             │
+│               └──────────────┬──────────────────┘             │
+│                              │                                │
+│                ┌─────────────┼─────────────┐                  │
+│                │             │             │                  │
+│                ▼             ▼             ▼                  │
+│       service_status   database_health   dns_resolution       │
+│                                                               │
+│                              │                                │
+│                              ▼                                │
+│                     restart_service()                         │
+│                      SIDE EFFECT                              │
+│                              │                                │
+│                     Human Approval                            │
+│                                                               │
+└───────────────────────────────────────────────────────────────┘
+                                     │
+                                     │ telemetry
+                                     ▼
+                           ┌───────────────────────┐
+                           │     OpenTelemetry     │
+                           └──────────┬────────────┘
+                                      │
+                                      ▼
+                           ┌───────────────────────┐
+                           │ Application Insights  │
+                           └──────────┬────────────┘
+                                      │
+                     ┌────────────────┴────────────────┐
+                     ▼                                 ▼
+               Foundry Traces                    Azure Monitor
+                     │                                 │
+                     └────────────────┬────────────────┘
+                                      ▼
+                           Reliability Metrics
+                                      │
+                 ┌────────────────────┼────────────────────┐
+                 │                    │                    │
+                 ▼                    ▼                    ▼
+          Runtime Incidents     Canary Metrics      Release Metrics
+                 │                    │                    │
+                 └────────────────────┼────────────────────┘
+                                      ▼
+                           ┌───────────────────────┐
+                           │   Reliability Analyst │
+                           │                       │
+                           │ probable root cause   │
+                           │ evidence              │
+                           │ containment           │
+                           │ remediation           │
+                           └───────────────────────┘
 
-                         │ telemetry
-                         ▼
 
-              ┌────────────────────────┐
-              │     OpenTelemetry      │
-              └───────────┬────────────┘
-                          │
-                          ▼
-              ┌────────────────────────┐
-              │ Application Insights   │
-              └───────────┬────────────┘
-                          │
-              ┌───────────┴───────────┐
-              ▼                       ▼
-       Foundry Traces          Foundry Monitor
-              │
-              ▼
-       Incident Context
-              │
-              ▼
-    ┌───────────────────────┐
-    │ Reliability Analyst   │
-    │                       │
-    │ probable root cause   │
-    │ evidence              │
-    │ recommended action    │
-    └───────────────────────┘
+Release Path
+────────────
+
+GitHub / Release Event
+        │
+        ▼
+   Azure Event Grid
+        │
+        ▼
+ Azure Durable Functions
+        │
+        ├── Deploy candidate
+        ├── Start 5% canary
+        ├── Collect reliability signals
+        ├── Evaluate release gate
+        └── Promote / Rollback
 ```
 
 ---
 
-# 4. 为什么选 Microsoft Foundry Hosted Agent
+# 4. 为什么使用 Microsoft Foundry Hosted Agent
 
-最终方案不要只用 Prompt Agent。
+最终方案不要只做 Prompt Agent。
 
 Hosted Agent 的价值：
 
 ```text
 YOUR Python CODE
-        ↓
+      ↓
 YOUR orchestration
-        ↓
+      ↓
 YOUR tool dispatcher
-        ↓
-YOUR policy
-        ↓
+      ↓
+YOUR reliability policy
+      ↓
 YOUR retry strategy
-        ↓
+      ↓
 YOUR loop detection
+      ↓
+YOUR approval / idempotency
+```
 
-运行在
+运行在：
+
+```text
 Microsoft Foundry Agent Service
 ```
 
@@ -190,6 +261,10 @@ allow / block / approve
   ↓
 tool execution
 ```
+
+核心原则：
+
+> **LLM 可以提出动作，但不能自己决定授权。**
 
 ---
 
@@ -220,16 +295,18 @@ produce health summary
 额外危险工具：
 
 ```text
-restart_service(service)
+restart_service(service, reason)
 ```
 
 这个工具不能直接执行。
 
+---
+
 ## Agent 2 — Reliability Analyst
 
-平时不参与业务执行。
+平时不参与正常业务执行。
 
-只有发生 Incident 时：
+只有发生 Incident 或 Release Regression 时：
 
 ```text
 Trace
@@ -240,11 +317,13 @@ Policy decisions
 +
 Fault information
 +
-Metrics
-       ↓
+Reliability metrics
++
+Release metadata
+        ↓
 Reliability Analyst
-       ↓
-Incident Report
+        ↓
+Incident / Release Report
 ```
 
 输出：
@@ -253,12 +332,16 @@ Incident Report
 Incident Type
 Probable Root Cause
 Affected Tool
+Affected Agent Version
 Evidence
 Containment Action
 Recommended Remediation
+Release Recommendation
 ```
 
-如果时间不足，Agent 2 可以降级为 P1。
+如果时间不足：
+
+> Reliability Analyst 可以降级为 P1。
 
 ---
 
@@ -266,7 +349,7 @@ Recommended Remediation
 
 这是整个项目的核心。
 
-建议包含：
+必须包含：
 
 ```text
 correlation_id
@@ -280,15 +363,43 @@ approval validation
 idempotency
 ```
 
+调用链：
+
+```text
+Agent
+  ↓
+Tool Request
+  ↓
+Reliability Gateway
+  ↓
+Schema Validation
+  ↓
+Policy
+  ↓
+Retry / Timeout Budget
+  ↓
+Loop Detector
+  ↓
+Approval / Idempotency
+  ↓
+Tool
+```
+
 核心原则：
 
-> LLM 可以提出动作，但不能自己决定授权。
+```text
+LLM decision
+≠
+authorization decision
+```
 
 ---
 
-# 7. 四种 Failure Injection
+# 7. 四种 Runtime Failure Injection
 
 永久锁定为 4 个，不再增加。
+
+---
 
 ## F1 — Tool Timeout
 
@@ -329,14 +440,16 @@ Trace：
 ```text
 Agent
  └─ tool.database_health
-       duration: 3.02s
-       status: ERROR
-       failure.type: TOOL_TIMEOUT
+        duration: 3.02s
+        status: ERROR
+        failure.type: TOOL_TIMEOUT
 ```
+
+---
 
 ## F2 — Reasoning Loop
 
-核心 Demo。
+这是核心 Demo。
 
 让：
 
@@ -353,7 +466,6 @@ INCONCLUSIVE
 Agent：
 
 ```text
-dns_resolution("api")
 dns_resolution("api")
 dns_resolution("api")
 dns_resolution("api")
@@ -374,13 +486,13 @@ SHA256(
 
 ```text
 same fingerprint
-        ↓
+      ↓
 call #1   OK
 call #2   OK
 call #3   LOOP SUSPECTED
-        ↓
+      ↓
 CIRCUIT BREAK
-        ↓
+      ↓
 Agent stopped
 ```
 
@@ -399,10 +511,12 @@ Containment:
 Execution terminated
 
 Probable Cause:
-Tool returned inconclusive result repeatedly,
+Tool returned inconclusive results repeatedly,
 causing the agent to retry without acquiring
 new information.
 ```
+
+---
 
 ## F3 — Retry Storm
 
@@ -410,7 +524,7 @@ new information.
 
 ```text
 database_health()
-        ↓
+      ↓
 HTTP 503
 ```
 
@@ -447,10 +561,12 @@ incident
 Telemetry：
 
 ```text
-agent.retry.count
-agent.retry.blocked
-agent.tool.failure
+afr.retry.count
+afr.retry.blocked
+afr.tool.failure
 ```
+
+---
 
 ## F4 — Unsafe Side Effect
 
@@ -474,7 +590,7 @@ Reliability Gateway：
 
 ```text
 side_effect = true
-        ↓
+      ↓
 ActionProposal
 ```
 
@@ -504,6 +620,8 @@ reason
 correlation_id
 +
 expiry
++
+agent_version
 ```
 
 再增加：
@@ -516,9 +634,7 @@ idempotency_key
 
 ---
 
-# 8. Detect → Diagnose → Contain
-
-这是整个项目必须坚持的产品故事。
+# 8. Runtime Reliability Story
 
 普通 Observability：
 
@@ -553,11 +669,471 @@ Recommended remediation
 
 最终定位：
 
-> **Detect → Diagnose → Contain**
+# **Detect → Diagnose → Contain**
 
 ---
 
-# 9. Observability
+# 9. Reliability-Gated Agent Release
+
+这是 v2 新增的高价值能力。
+
+不要做普通 Canary Deployment。
+
+要做：
+
+# **Reliability-Gated Agent Release**
+
+目的：
+
+> 新 Agent Version 不能因为“部署成功”就直接进入 Production，而必须通过真实 Agent Reliability Signals。
+
+---
+
+# 10. Canary Release Architecture
+
+```text
+                       Release Candidate v2
+                               │
+                               ▼
+                      Azure Event Grid
+                               │
+                               ▼
+                    Azure Durable Functions
+                               │
+                  ┌────────────┼────────────┐
+                  │            │            │
+                  ▼            ▼            ▼
+               Deploy       Evaluate       Route
+                  │            │            │
+                  ▼            ▼            ▼
+            Foundry v2   Eval Dataset   APIM Canary
+                                              │
+                                    ┌─────────┴─────────┐
+                                    │                   │
+                                  95%                  5%
+                                    │                   │
+                                    ▼                   ▼
+                              Stable v1           Candidate v2
+                                    │                   │
+                                    └─────────┬─────────┘
+                                              │
+                                              ▼
+                                     Agent Flight Recorder
+                                              │
+                                              ▼
+                                      Reliability Signals
+                                              │
+                 ┌────────────────────────────┼──────────────────────────┐
+                 │                            │                          │
+                 ▼                            ▼                          ▼
+          loop rate                  retry exhaustion             timeout rate
+                 │                            │                          │
+                 ├────────────────────────────┼──────────────────────────┤
+                 │                            │
+                 ▼                            ▼
+          unsafe action rate              P95 latency
+                 │
+                 ▼
+          evaluation score
+                 │
+                 ▼
+          Reliability Gate
+                 │
+             ┌───┴───┐
+             │       │
+            PASS    FAIL
+             │       │
+             ▼       ▼
+           25%     Rollback
+             ↓
+           50%
+             ↓
+          100%
+```
+
+---
+
+# 11. Canary Routing
+
+Foundry Agent Version 不直接承担完整的 Canary Routing。
+
+由：
+
+```text
+Azure API Management
+```
+
+作为前置入口。
+
+基本模式：
+
+```text
+Stable Agent v1       Candidate Agent v2
+      ▲                       ▲
+      │                       │
+     95%                      5%
+      │                       │
+      └───────────┬───────────┘
+                  │
+                  ▼
+                APIM
+```
+
+必须注意：
+
+# **Session Affinity**
+
+不能出现：
+
+```text
+Conversation A
+
+request 1 → v1
+request 2 → v2
+request 3 → v1
+```
+
+正确行为：
+
+```text
+conversation_id
+      ↓
+stable hash / session affinity
+      ↓
+same conversation
+      ↓
+same agent version
+```
+
+例如：
+
+```text
+Conversation A → Canary v2
+Conversation B → Stable v1
+Conversation C → Stable v1
+```
+
+整个 conversation 生命周期保持一致。
+
+---
+
+# 12. Canary Promotion Policy
+
+建议：
+
+```text
+5%
+↓
+25%
+↓
+50%
+↓
+100%
+```
+
+每一步都必须经过 Reliability Gate。
+
+示例：
+
+```text
+Stage 1:
+5%
+20 sessions minimum
+
+Stage 2:
+25%
+50 sessions minimum
+
+Stage 3:
+50%
+100 sessions minimum
+
+Stage 4:
+100%
+Production
+```
+
+Hackathon 不需要跑海量真实用户。
+
+可以通过：
+
+```text
+synthetic traffic
++
+failure injection
++
+evaluation dataset
+```
+
+构造可重复的 release benchmark。
+
+---
+
+# 13. Reliability Gate
+
+示例阈值：
+
+```text
+reasoning_loop_rate        <= 1%
+retry_budget_exhaustion    <= 2%
+tool_timeout_rate          <= 3%
+unsafe_side_effects        == 0
+containment_rate           >= 95%
+p95_reliability_overhead   <= 150 ms
+evaluation_score           >= stable baseline
+```
+
+注意：
+
+> 最终阈值必须根据真实 Benchmark 调整，不提前编数字。
+
+Release Gate 输入：
+
+```text
+Runtime Reliability Metrics
++
+Evaluation Results
++
+Latency
++
+Safety Signals
++
+Trace Completeness
+```
+
+输出：
+
+```text
+PROMOTE
+or
+ROLLBACK
+```
+
+---
+
+# 14. Canary Regression Demo
+
+为了让 Demo 非常直观，Candidate v2 故意引入一个 Regression。
+
+例如：
+
+```text
+Stable v1:
+dns_resolution inconclusive
+→ fallback to service_status
+
+Candidate v2:
+dns_resolution inconclusive
+→ retry dns_resolution
+→ retry
+→ retry
+→ reasoning loop
+```
+
+Canary：
+
+```text
+5% traffic → Candidate v2
+```
+
+结果：
+
+```text
+Reasoning Loop Rate spikes
+        ↓
+Reliability Gate FAIL
+        ↓
+Promotion blocked
+        ↓
+Candidate v2 rollback
+        ↓
+Stable v1 restored
+```
+
+UI：
+
+```text
+╔═══════════════════════════════════════╗
+║ AGENT RELEASE FAILED                  ║
+║                                       ║
+║ Candidate: cloud-ops-agent-v2         ║
+║ Canary Traffic: 5%                    ║
+║                                       ║
+║ Regression                            ║
+║ REASONING_LOOP_RATE                   ║
+║                                       ║
+║ Stable:     0.5%                      ║
+║ Candidate:  8.3%                      ║
+║                                       ║
+║ Evidence                              ║
+║ dns_resolution() repeated 3×          ║
+║ identical args fingerprint            ║
+║                                       ║
+║ Action                                ║
+║ AUTOMATIC ROLLBACK                    ║
+║                                       ║
+║ Status                                ║
+║ CONTAINED                             ║
+╚═══════════════════════════════════════╝
+```
+
+---
+
+# 15. Release Orchestration
+
+使用：
+
+```text
+Azure Event Grid
++
+Azure Durable Functions
++
+Azure Functions
+```
+
+职责划分：
+
+## Event Grid
+
+表示：
+
+```text
+release.created
+candidate.deployed
+canary.started
+gate.completed
+release.promoted
+release.rolled_back
+```
+
+---
+
+## Durable Functions
+
+负责长事务编排：
+
+```text
+Deploy Candidate
+      ↓
+Wait Ready
+      ↓
+Start 5% Canary
+      ↓
+Collect Metrics
+      ↓
+Evaluate Reliability Gate
+      ↓
+PASS?
+ ├─ Yes → Increase Traffic
+ └─ No  → Rollback
+```
+
+这个流程不交给 LLM 自由决定。
+
+> **Release promotion is deterministic orchestration, not agent reasoning.**
+
+---
+
+## Azure Functions
+
+负责小型 deterministic activities：
+
+```text
+deploy_candidate()
+set_canary_weight()
+query_reliability_metrics()
+evaluate_release_gate()
+promote_candidate()
+rollback_candidate()
+```
+
+---
+
+# 16. Release State Machine
+
+```text
+CREATED
+  ↓
+DEPLOYING
+  ↓
+READY
+  ↓
+CANARY_5
+  ↓
+GATE_5
+  ├── FAIL → ROLLED_BACK
+  ↓ PASS
+CANARY_25
+  ↓
+GATE_25
+  ├── FAIL → ROLLED_BACK
+  ↓ PASS
+CANARY_50
+  ↓
+GATE_50
+  ├── FAIL → ROLLED_BACK
+  ↓ PASS
+PROMOTED
+```
+
+必须保证：
+
+```text
+Promotion
+≠
+LLM decision
+```
+
+而是：
+
+```text
+Deterministic Reliability Gate
++
+Durable Orchestration
+```
+
+---
+
+# 17. Release Idempotency
+
+Release 操作一样需要幂等。
+
+例如：
+
+```text
+release_id
++
+candidate_version
++
+target_stage
+```
+
+生成：
+
+```text
+release_idempotency_key
+```
+
+保证：
+
+```text
+duplicate Event Grid event
+duplicate retry
+function retry
+orchestrator replay
+```
+
+不会：
+
+```text
+重复 promotion
+重复 rollback
+重复修改 routing weight
+```
+
+---
+
+# 18. Observability
 
 采用：
 
@@ -568,10 +1144,12 @@ OpenTelemetry
 +
 Application Insights
 +
-Foundry Monitor
+Azure Monitor
 ```
 
-再增加自己的 Reliability Telemetry：
+再增加自己的 Reliability Telemetry。
+
+Runtime：
 
 ```text
 afr.tool.call
@@ -585,11 +1163,25 @@ afr.side_effect.executed
 afr.incident.created
 ```
 
-每个 span/event 包含：
+Release：
+
+```text
+afr.release.created
+afr.release.canary.started
+afr.release.gate.passed
+afr.release.gate.failed
+afr.release.promoted
+afr.release.rolled_back
+afr.release.regression.detected
+```
+
+每个 span / event 包含：
 
 ```text
 trace_id
 conversation_id
+agent_version
+release_id
 tool_name
 tool_call_id
 args_fingerprint
@@ -597,13 +1189,15 @@ attempt
 duration_ms
 failure_type
 policy_decision
+canary_stage
+release_decision
 ```
 
 ---
 
-# 10. Security
+# 19. Security
 
-只保留真正重要的三部分：
+只保留真正重要的部分：
 
 ```text
 Microsoft Entra
@@ -616,14 +1210,6 @@ RBAC Least Privilege
 核心原则：
 
 ```text
-LLM decision
-≠
-authorization decision
-```
-
-即：
-
-```text
 LLM:
 "I want to restart service."
 
@@ -634,17 +1220,28 @@ Human:
 "Do I approve?"
 ```
 
+Release 同样：
+
+```text
+Agent:
+"I think v2 is healthy."
+
+Reliability Gate:
+"Metrics must prove it."
+```
+
 禁止：
 
 ```text
 API key hard-coded in source
 Agent 自己决定 authorization
 Agent 直接执行危险 side effect
+Agent 自己决定 release promotion
 ```
 
 ---
 
-# 11. Terraform
+# 20. Terraform
 
 基础设施使用 Terraform。
 
@@ -656,22 +1253,27 @@ Foundry Resource
 Foundry Project
 Model Deployment
 Application Insights
+Azure Monitor resources
 Storage
+Managed Identity
 RBAC
+API Management
+Event Grid
+Azure Functions / Durable Functions dependencies
 Connections
 ```
 
-Hosted Agent 部署不强求 Terraform。
+Hosted Agent 部署不强求全部 Terraform 化。
 
 最终：
 
 ```text
 Terraform
-     ↓
+   ↓
 Infrastructure
 
 azd / Foundry SDK
-     ↓
+   ↓
 Hosted Agent Version Deployment
 ```
 
@@ -679,7 +1281,7 @@ Hosted Agent Version Deployment
 
 ---
 
-# 12. Repository Structure
+# 21. Repository Structure
 
 仓名：
 
@@ -708,6 +1310,15 @@ agent-flight-recorder/
 │   │   ├── approval.py
 │   │   └── idempotency.py
 │   │
+│   ├── release/
+│   │   ├── canary_router.py
+│   │   ├── session_affinity.py
+│   │   ├── release_state.py
+│   │   ├── gate.py
+│   │   ├── metrics.py
+│   │   ├── promotion.py
+│   │   └── rollback.py
+│   │
 │   ├── tools/
 │   │   ├── service_status.py
 │   │   ├── database_health.py
@@ -722,6 +1333,17 @@ agent-flight-recorder/
 │   └── faults/
 │       └── injection.py
 │
+├── orchestration/
+│   ├── durable/
+│   │   ├── release_orchestrator.py
+│   │   ├── deploy_activity.py
+│   │   ├── metrics_activity.py
+│   │   ├── gate_activity.py
+│   │   └── rollback_activity.py
+│   │
+│   └── events/
+│       └── handlers.py
+│
 ├── ui/
 │
 ├── infra/
@@ -729,6 +1351,9 @@ agent-flight-recorder/
 │   ├── foundry.tf
 │   ├── model.tf
 │   ├── monitoring.tf
+│   ├── apim.tf
+│   ├── eventgrid.tf
+│   ├── functions.tf
 │   ├── storage.tf
 │   ├── identity.tf
 │   ├── rbac.tf
@@ -742,12 +1367,18 @@ agent-flight-recorder/
 │   ├── unit/
 │   ├── integration/
 │   ├── negative/
-│   └── failure_benchmark/
+│   ├── failure_benchmark/
+│   └── release_benchmark/
+│
+├── benchmark/
+│   ├── runtime/
+│   └── release/
 │
 ├── docs/
 │   ├── architecture.md
 │   ├── reliability-model.md
 │   ├── threat-model.md
+│   ├── release-model.md
 │   ├── benchmark.md
 │   ├── incident-examples.md
 │   └── demo-script.md
@@ -757,7 +1388,7 @@ agent-flight-recorder/
 
 ---
 
-# 13. Benchmark
+# 22. Runtime Benchmark
 
 总计：
 
@@ -797,25 +1428,70 @@ Agent Flight Recorder
 
 > 不提前编 Benchmark 数字。
 
-必须真实运行后才能写真实提升数据。
+必须真实运行后才能填写。
 
 ---
 
-# 14. 最终 Dashboard
+# 23. Release Benchmark
 
-目标 UI：
+新增一组：
 
 ```text
-┌──────────────── Agent Flight Recorder ───────────────┐
+20 × Good Candidate Release
+20 × Reasoning Loop Regression
+20 × Retry Regression
+20 × Timeout Regression
+20 × Unsafe Action Regression
 
-Incidents                                4
+= 100 release simulations
+```
 
-Contained                                4
+比较：
 
-Unsafe Actions Prevented                 1
+```text
+Deploy Directly
+vs
+Reliability-Gated Canary
+```
 
-Retries Prevented                        7
+记录：
 
+| Metric | Direct Release | AFR Canary |
+|---|---:|---:|
+| Bad release detection rate | | |
+| Bad release promotion rate | | |
+| Rollback success rate | | |
+| Regression detection latency P50 | | |
+| Regression detection latency P95 | | |
+| User sessions exposed before rollback | | |
+| Unsafe actions before rollback | | |
+| Release decision accuracy | | |
+| Release overhead | | |
+
+这会形成非常强的 Impact 数据。
+
+---
+
+# 24. 最终 Dashboard
+
+主页：
+
+```text
+┌──────────────── Agent Flight Recorder ────────────────┐
+
+Runtime Incidents                         4
+Contained                                 4
+Unsafe Actions Prevented                  1
+Retries Prevented                         7
+
+Active Release
+
+Candidate                                 agent-v2
+Canary                                    5%
+Reliability Gate                          FAILED
+Action                                    ROLLED BACK
+
+────────────────────────────────────────────────────────
 
 Recent Incident
 
@@ -829,16 +1505,29 @@ Call #2        219ms
 Call #3        226ms
                │
                ▼
-        CIRCUIT BREAKER
+         CIRCUIT BREAKER
 
 Root Cause
-Agent repeatedly called dns_resolution with
-identical arguments after inconclusive responses.
+Agent repeatedly called dns_resolution with identical
+arguments after inconclusive responses.
 
 Action
 Execution terminated.
 
 ────────────────────────────────────────────────────────
+
+Recent Release
+
+candidate: agent-v2
+stage:     5%
+decision:  FAILED
+reason:    REASONING_LOOP_RATE
+
+Stable     0.5%
+Candidate  8.3%
+
+Action:
+AUTOMATIC ROLLBACK
 ```
 
 另一个页面直接展示：
@@ -859,56 +1548,78 @@ Microsoft Native Observability Evidence
 
 ---
 
-# 15. Microsoft Agent-a-Thon 3 分钟 Demo
+# 25. 3 分钟 Demo
+
+## 最终版
 
 | 时间 | 内容 |
 |---|---|
-| 0:00–0:20 | Problem：Production AI agents are black boxes when things go wrong |
-| 0:20–0:40 | Architecture + Agent Flight Recorder |
-| 0:40–1:05 | 正常 Cloud Operations Agent |
-| 1:05–1:30 | 注入 Reasoning Loop |
-| 1:30–1:50 | 自动 Detect + Contain |
-| 1:50–2:10 | Foundry / Application Insights Trace |
-| 2:10–2:30 | Reliability Analyst RCA |
-| 2:30–2:45 | Unsafe Action → Human Approval |
-| 2:45–3:00 | Benchmark + Closing |
+| 0:00–0:20 | Problem：Production agents fail differently from normal software |
+| 0:20–0:35 | Architecture + Agent Flight Recorder |
+| 0:35–0:55 | 正常 Cloud Operations Agent |
+| 0:55–1:20 | 注入 Reasoning Loop |
+| 1:20–1:40 | Detect + Contain |
+| 1:40–1:55 | Foundry / Application Insights Trace |
+| 1:55–2:10 | Reliability Analyst RCA |
+| 2:10–2:25 | Unsafe Action → Human Approval |
+| 2:25–2:45 | Deploy Candidate v2 → 5% Canary → Regression |
+| 2:45–2:55 | Reliability Gate FAIL → Automatic Rollback |
+| 2:55–3:00 | Benchmark + Closing |
 
 重点演示：
 
 ```text
+Runtime:
 Reasoning Loop
 → Detect
 → Kill
 → RCA
+
+Release:
+Candidate v2
+→ 5% Canary
+→ Regression
+→ Gate FAIL
+→ Rollback
 ```
 
-Timeout / Retry Storm / Unsafe Action 快速展示即可。
+Timeout / Retry Storm / Unsafe Action 用 Dashboard 快速展示。
 
 ---
 
-# 16. Demo Opening
+# 26. Demo Opening
 
-> **Traditional observability tells you that an application failed. Agent Flight Recorder tells you why the agent behaved incorrectly—and stops it before it causes more damage.**
+> **Traditional observability tells you that an application failed. Agent Flight Recorder tells you why the agent behaved incorrectly, stops it before it causes more damage, and prevents unreliable versions from reaching full production.**
 
 ---
 
-# 17. Demo Closing
+# 27. Demo Closing
 
 ```text
-Observe agents.
+Evaluate agents.
+Release safely.
+Observe behavior.
 Understand failures.
 Contain damage.
 
 Agent Flight Recorder.
 ```
 
+或更短：
+
+> **Protect agents when they change and when they run.**
+
 ---
 
-# 18. AWS AIP 之后的 Foundry 学习路线
+# 28. Microsoft Foundry 学习路线
 
-不要漫无目的刷 Foundry 文档，只学 6 个主题。
+不要漫无目的刷文档，只学和项目直接相关的主题。
+
+---
 
 ## H1 — Foundry 基础 — 2h
+
+搞懂：
 
 ```text
 Foundry Resource
@@ -923,13 +1634,15 @@ Responses API
 ```text
 Python
 → Foundry
-→ model
-→ response
+→ Model
+→ Response
 ```
+
+---
 
 ## H2 — Agent — 2h
 
-做最小 Prompt Agent：
+做最小 Agent：
 
 ```text
 Agent
@@ -946,6 +1659,8 @@ Tool Call
 Tool Result
 ```
 
+---
+
 ## H3 — Hosted Agent — 3h
 
 主线：
@@ -958,6 +1673,8 @@ Python Agent
 → Foundry Endpoint
 ```
 
+---
+
 ## H4 — Observability — 2h
 
 连接：
@@ -966,14 +1683,14 @@ Python Agent
 Application Insights
 ```
 
-然后：
+确认：
 
 ```text
 Foundry
 → Traces
 ```
 
-确认能看到：
+能看到：
 
 ```text
 request
@@ -982,6 +1699,8 @@ tool
 latency
 tokens
 ```
+
+---
 
 ## H5 — Identity — 1.5h
 
@@ -1004,9 +1723,11 @@ Agent
 
 不使用 secret。
 
+---
+
 ## H6 — Terraform — 2h
 
-从零：
+从：
 
 ```text
 terraform apply
@@ -1022,25 +1743,71 @@ Application Insights
 RBAC
 ```
 
-总学习时间：
+---
 
-> **约 12 小时**
+## H7 — Durable Functions / Event Grid — 3h
 
-之后立刻开始项目。
+搞懂：
+
+```text
+Event Grid
+→ Durable Orchestrator
+→ Activity Functions
+```
+
+完成：
+
+```text
+release.created
+→ orchestrator
+→ deploy
+→ evaluate
+→ promote / rollback
+```
 
 ---
 
-# 19. 项目时间预算
+## H8 — APIM Canary Routing — 2h
 
-目标控制在：
+搞懂：
 
-> **50–60 小时**
+```text
+backend pool
+weighted routing
+session affinity
+```
+
+完成：
+
+```text
+95%
+Stable v1
+
+5%
+Candidate v2
+```
+
+总学习预算：
+
+> **约 17–18 小时**
+
+---
+
+# 29. 项目时间预算
+
+目标：
+
+> **60–70 小时**
+
+---
 
 ## Phase 0 — Foundry Learning
 
 ```text
-12h
+17h
 ```
+
+---
 
 ## Phase 1 — Baseline Agent
 
@@ -1055,6 +1822,8 @@ Hosted Cloud Ops Agent
 3 read tools
 1 side-effect tool
 ```
+
+---
 
 ## Phase 2 — Flight Recorder Core
 
@@ -1073,6 +1842,8 @@ retry budget
 dispatcher
 ```
 
+---
+
 ## Phase 3 — Safety
 
 ```text
@@ -1087,6 +1858,8 @@ approval
 immutable binding
 idempotency
 ```
+
+---
 
 ## Phase 4 — Observability
 
@@ -1104,6 +1877,8 @@ custom metrics
 Foundry traces
 ```
 
+---
+
 ## Phase 5 — Analyst + UI
 
 ```text
@@ -1113,30 +1888,77 @@ Foundry traces
 完成：
 
 ```text
-RCA Agent
+Reliability Analyst
 Chat
 Fault Selector
 Incident Panel
 Approve / Reject
+Release Panel
 ```
 
-## Phase 6 — Benchmark
+---
+
+## Phase 6 — Runtime Benchmark
 
 ```text
 6h
 ```
 
-运行 100 次 Failure Injection。
+运行：
+
+```text
+100 injected incidents
+```
 
 输出：
 
 ```text
-results.json
-results.csv
-benchmark.md
+runtime-results.json
+runtime-results.csv
+runtime-benchmark.md
 ```
 
-## Phase 7 — Competition Polish
+---
+
+## Phase 7 — Reliability-Gated Canary
+
+```text
+8h
+```
+
+完成：
+
+```text
+APIM routing
+Stable / Candidate
+5% canary
+session affinity
+Reliability Gate
+promotion
+rollback
+```
+
+---
+
+## Phase 8 — Release Orchestration
+
+```text
+5h
+```
+
+完成：
+
+```text
+Event Grid
+Durable Functions
+Azure Functions activities
+release state machine
+release idempotency
+```
+
+---
+
+## Phase 9 — Competition Polish
 
 ```text
 5h
@@ -1154,12 +1976,16 @@ Submission Text
 
 ---
 
-# 20. P0 — 必须完成
+# 30. P0 — 必须完成
+
+比赛真正主链：
 
 ```text
 Hosted Agent
 3 read tools
 1 side-effect tool
+
+Reliability Gateway
 
 OpenTelemetry
 Application Insights
@@ -1175,35 +2001,78 @@ Human Approval
 Idempotency
 
 Fault Injection
-Benchmark
+Runtime Benchmark
 
 Minimal UI
 3-minute Demo
 ```
 
+如果这些没完成：
+
+> 不准做高级 Canary。
+
 ---
 
-# 21. P1 — 有时间再做
+# 31. P0.5 — 高价值增强
+
+在 P0 完成之后立刻做：
+
+```text
+Stable v1
+Candidate v2
+5% Canary
+Reliability Gate
+Automatic Rollback
+Release Panel
+```
+
+这部分就是比赛差异化亮点。
+
+最小实现甚至可以只做：
+
+```text
+5%
+→ evaluate
+→ PASS / FAIL
+→ promote / rollback
+```
+
+不必一开始就完整：
+
+```text
+5 → 25 → 50 → 100
+```
+
+---
+
+# 32. P1 — 有时间再做
 
 ```text
 Reliability Analyst Agent
-Azure Functions Remote Tools
-Foundry Toolbox
-Continuous Evaluation
+完整 5→25→50→100 Progressive Delivery
+Durable Functions 完整状态机
+Event Grid Release Events
+Release Benchmark 100 次
 Azure Monitor Alerts
 高级 Dashboard
-CI/CD
+CI/CD Automation
 ```
 
 如果时间不够：
 
-> Reliability Analyst Agent 可以砍。
+```text
+Runtime Detect / Diagnose / Contain
+>
+Canary
+>
+高级 Release Automation
+```
 
-Detect / Diagnose / Contain 主链不能砍。
+优先级不能反。
 
 ---
 
-# 22. 严格禁止 Scope Creep
+# 33. 严格禁止 Scope Creep
 
 以下内容不做：
 
@@ -1212,21 +2081,24 @@ RAG
 AI Search
 Vector DB
 GraphRAG
-Cosmos DB（除非真正需要）
+Cosmos DB（除非真正必要）
 Kubernetes
 AKS
+Service Mesh
+Argo Rollouts
+复杂 React 前端
 MCP 大合集
 5 个 Agent
 Voice
 Image
 Web Search
-复杂 React 前端
 自己造 tracing platform
+完整企业级 CI/CD Platform
 ```
 
 判断标准：
 
-> **它有没有增强 Agent Reliability？**
+> **它有没有直接增强 Agent Reliability？**
 
 没有：
 
@@ -1234,13 +2106,15 @@ Web Search
 
 ---
 
-# 23. 比赛策略
+# 34. 比赛策略
 
 目标：
 
 > **Asia Top 6**
 
-围绕三个评分方向反向设计：
+围绕三个方向反向设计。
+
+---
 
 ## Innovation
 
@@ -1248,7 +2122,21 @@ Web Search
 Agent-specific failure detection
 +
 deterministic containment
++
+reliability-gated release
++
+automatic rollback
 ```
+
+不是普通 observability。
+
+不是普通 canary。
+
+是：
+
+> **Agent-aware reliability control plane.**
+
+---
 
 ## Usability
 
@@ -1259,69 +2147,172 @@ clear incident timeline
 +
 approval UI
 +
+release panel
++
 trace evidence
++
+one-click canary simulation
 ```
+
+---
 
 ## Impact
 
 ```text
-100 injected incidents
+100 injected runtime incidents
 +
-real benchmark
+release simulations
 +
 measured reduction in redundant calls/retries
 +
 unsafe action prevention
++
+bad release detection
++
+automatic rollback
 ```
 
 ---
 
-# 24. 最终项目定位
+# 35. 最终项目定位
 
-最终不要再改变题目。
+不要再改变题目。
+
+完整演进：
 
 ```text
 Observability
-        ↓
+      ↓
 Reliability Engineering
-        ↓
+      ↓
 Failure Detection
-        ↓
+      ↓
 Deterministic Containment
-        ↓
+      ↓
 Human Control
-        ↓
+      ↓
 Measured Impact
+      ↓
+Reliability-Gated Release
+      ↓
+Automatic Rollback
 ```
 
 最终一句话：
 
-> **Agent Flight Recorder is a production reliability layer for Microsoft Foundry agents that detects, diagnoses, and contains tool timeouts, reasoning loops, retry storms, and unsafe actions before they become production incidents.**
+> **Agent Flight Recorder is a production reliability layer for Microsoft Foundry agents that detects, diagnoses, and contains runtime failures while using reliability-gated canary releases to prevent bad agent versions from reaching full production.**
 
 ---
 
-# 25. 执行顺序
-
-当前：
+# 36. 最终产品能力
 
 ```text
-AWS AIP
+                     Agent Flight Recorder
+
+               ┌────────────────────────────┐
+               │      BEFORE RELEASE        │
+               └────────────────────────────┘
+
+Evaluate
+   ↓
+Deploy Candidate
+   ↓
+5% Canary
+   ↓
+Measure Reliability
+   ↓
+Reliability Gate
+   ↓
+Promote / Rollback
+
+
+               ┌────────────────────────────┐
+               │      DURING RUNTIME        │
+               └────────────────────────────┘
+
+Observe
+   ↓
+Detect
+   ↓
+Diagnose
+   ↓
+Contain
+   ↓
+Human Control
 ```
 
-完成之后：
+---
+
+# 37. 最终技术栈
 
 ```text
-12h New Microsoft Foundry Study
+Microsoft Foundry
+Microsoft Agent Framework
+Hosted Agent
+
+OpenTelemetry
+Application Insights
+Azure Monitor
+Foundry Traces
+
+Azure API Management
+Azure Event Grid
+Azure Durable Functions
+Azure Functions
+
+Microsoft Entra
+Managed Identity
+RBAC
+
+Terraform
+
+Deterministic Tool Policy
+Retry Budget
+Timeout Budget
+Reasoning Loop Detection
+Human Approval
+Idempotency
+
+Failure Injection
+Runtime Benchmark
+Release Benchmark
+
+Reliability-Gated Canary
+Automatic Rollback
+```
+
+---
+
+# 38. 最终执行顺序
+
+当前学习完成后：
+
+```text
+Microsoft Foundry Fundamentals
         ↓
 Hosted Agent
         ↓
-Tracing / Identity / Terraform
+Tracing
         ↓
-Agent Flight Recorder
+Identity
         ↓
-50–60h Build
+Terraform
         ↓
-100 Failure Benchmark
+Agent Flight Recorder Runtime Core
+        ↓
+Four Failure Scenarios
+        ↓
+100 Runtime Incident Benchmark
+        ↓
+Minimal UI
+        ↓
+Reliability-Gated Canary
+        ↓
+5% Candidate Release
+        ↓
+Automatic Rollback
+        ↓
+Release Orchestration
         ↓
 3-minute Competition Demo
         ↓
@@ -1330,13 +2321,13 @@ Microsoft Agent-a-Thon Submission
 
 ---
 
-# 26. Final Decision
+# 39. Final Decision
 
 项目：
 
 # **Agent Flight Recorder**
 
-核心卖点：
+第一核心卖点：
 
 ```text
 Detect
@@ -1344,24 +2335,27 @@ Diagnose
 Contain
 ```
 
-核心技术：
+第二核心卖点：
 
 ```text
-Microsoft Foundry Hosted Agent
-Microsoft Agent Framework
-OpenTelemetry
-Application Insights
-Foundry Traces
-Managed Identity
-RBAC
-Terraform
-Deterministic Tool Policy
-Human Approval
-Idempotency
-Failure Injection
-Reliability Benchmark
+Evaluate
+Canary
+Gate
+Rollback
 ```
 
-最终目标：
+合并成：
 
-> **不是做一个会调用工具的 Agent，而是做一个能够让 Production AI Agent 可观察、可诊断、可控制的 Reliability Layer。**
+# **Runtime Reliability + Safe Agent Delivery**
+
+最终不是：
+
+> 一个会调用工具的 Agent。
+
+而是：
+
+> **一个让 Production AI Agent 可观察、可诊断、可控制、可安全发布、可自动回滚的 Reliability Layer。**
+
+最终 Closing：
+
+> **Protect agents when they change and when they run.**
