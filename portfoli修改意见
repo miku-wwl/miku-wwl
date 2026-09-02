@@ -1,0 +1,682 @@
+You are going to redesign the information architecture of my existing engineering portfolio.
+
+IMPORTANT:
+
+This is NOT a visual redesign from scratch.
+
+The current portfolio already has a distinctive cyber / terminal / system HUD / orbital control-plane aesthetic. Preserve that design language.
+
+Do NOT convert the site into a generic developer portfolio with a white background, profile photo, About Me / Skills / Projects template.
+
+The goal is to improve recruiter readability, engineering evidence density, and information architecture while preserving the existing identity.
+
+==================================================
+1. PRIMARY GOAL
+==================================================
+
+The current homepage behaves too much like a portal:
+
+Hero
+→ "Choose your next area"
+→ Career
+→ Engineering Projects
+→ Certification Vault
+→ Engineering Lab
+
+This forces recruiters to click multiple pages before understanding the candidate.
+
+Redesign the homepage into a SINGLE-PAGE ENGINEERING OVERVIEW.
+
+A recruiter should understand the candidate's engineering profile within approximately 30–60 seconds without leaving the homepage.
+
+Deep-dive pages should still exist.
+
+The new model is:
+
+Homepage
+    ↓
+Understand the engineer
+
+Deep-dive pages
+    ↓
+Explore detailed evidence
+
+The guiding principle is:
+
+"Show the evidence first. Exploration comes second."
+
+==================================================
+2. PRESERVE THE CURRENT VISUAL LANGUAGE
+==================================================
+
+Preserve:
+
+- terminal syntax
+- ~/miku-wwl identity
+- monospace typography
+- system/HUD language
+- orbital visual theme
+- dark/night theme
+- node/system concepts
+- status indicators
+- cyber/cloud infrastructure aesthetic
+- control-plane feeling
+
+Do NOT imitate another person's portfolio UI.
+
+The redesign concerns INFORMATION ARCHITECTURE and EVIDENCE PRESENTATION, not visual identity.
+
+==================================================
+3. HOMEPAGE INFORMATION ARCHITECTURE
+==================================================
+
+Replace the existing homepage structure:
+
+Hero
+↓
+Choose your next area
+↓
+4 navigation cards
+
+with approximately:
+
+Hero
+↓
+Engineering Signals
+↓
+Career / Production Experience
+↓
+Featured Engineering Projects
+↓
+Engineering Labs / Failure Engineering
+↓
+Certifications
+↓
+Contact / CTA
+
+The homepage should be vertically scrollable.
+
+Existing navigation such as:
+
+HUB
+CAREER
+PROJECTS
+CERTS
+LAB
+
+may remain.
+
+However, homepage navigation should preferably scroll to corresponding homepage sections.
+
+Existing deep-dive pages must remain available.
+
+==================================================
+4. HERO
+==================================================
+
+Do not radically redesign the current Hero.
+
+Keep the strong engineering identity.
+
+The Hero currently communicates concepts such as:
+
+Senior Software Engineer
+Platform Engineering & SRE
+AWS Solutions Architect Professional
+Azure Solutions Architect Expert
+Terraform Professional
+CKAD
+
+Preserve this high-signal positioning.
+
+Add clear recruiter CTAs.
+
+Possible actions:
+
+View Engineering Work
+Download CV
+GitHub
+LinkedIn
+
+The user should never wonder what to do after reading the Hero.
+
+==================================================
+5. ENGINEERING SIGNALS SECTION
+==================================================
+
+Add a compact Engineering Signals section immediately after the Hero.
+
+The purpose is to compress the strongest engineering signals into a quickly readable format.
+
+Conceptual example:
+
+// ENGINEERING SIGNALS
+
+PRODUCTION
+Backend / distributed systems
+
+PLATFORM
+Kubernetes
+Terraform
+Cloud infrastructure
+
+CLOUD
+AWS Professional
+Azure Architect Expert
+
+RELIABILITY
+Incident response
+Failure engineering
+Observability
+
+Do not create fake statistics.
+
+If numeric values are displayed, they must be supported by repository/project evidence.
+
+==================================================
+6. CAREER SECTION
+==================================================
+
+The homepage Career section should NOT reproduce the entire CV.
+
+Only show high-signal engineering experience.
+
+Emphasize:
+
+- production systems
+- distributed systems
+- Kubernetes
+- backend systems
+- networking
+- troubleshooting
+- reliability
+- platform engineering
+
+Show concise company/role/system summaries.
+
+Provide a CTA:
+
+View Full Career Journey
+
+The purpose of this section is to answer:
+
+"Has this person actually worked on serious engineering systems?"
+
+==================================================
+7. FEATURED ENGINEERING PROJECTS
+==================================================
+
+This is one of the most important changes.
+
+Projects must NOT be presented primarily as technology lists.
+
+Bad example:
+
+Cloud Governance X
+.NET
+PostgreSQL
+Terraform
+Azure
+
+Instead, every major project should present engineering evidence.
+
+Use a structure conceptually similar to:
+
+PROJECT NAME
+
+One-sentence engineering problem / purpose
+
+SYSTEM
+Relevant architecture / technologies
+
+IMPLEMENTED
+✓ capability
+✓ capability
+✓ capability
+
+ENGINEERING EVIDENCE
+✓ tests
+✓ CI
+✓ architecture validation
+✓ security controls
+✓ migrations
+✓ failure handling
+✓ runbooks
+✓ metrics
+etc.
+
+STATUS
+Build
+Tests
+CI
+Architecture
+Deployment
+etc.
+
+ACTIONS
+Architecture
+Evidence
+Source
+Deep Dive
+
+The exact content must be derived from the actual repository.
+
+DO NOT claim functionality that has not been implemented.
+
+==================================================
+8. EVIDENCE-FIRST PROJECT DESIGN
+==================================================
+
+For every major engineering project, try to expose evidence such as:
+
+- automated tests
+- CI status
+- architecture tests
+- Terraform validation
+- security controls
+- identity/authentication
+- authorization
+- audit
+- ETL executions
+- idempotency
+- database migration testing
+- failure tests
+- performance results
+- metrics
+- observability
+- ADRs
+- runbooks
+- incident records
+- screenshots
+- architecture diagrams
+
+The goal is:
+
+Projects = "What systems can this engineer build?"
+
+==================================================
+9. DO NOT OVEREMPHASIZE PLANNED PROJECTS
+==================================================
+
+Planned projects should not occupy the same visual priority as implemented projects.
+
+Priority should be:
+
+Completed
+>
+Active / demonstrably implemented
+>
+Partial
+>
+Planned
+
+Avoid prominent cards containing only:
+
+planned
+coming soon
+future
+placeholder
+
+If planned work is shown, place it in a small:
+
+NEXT
+RESEARCH
+ROADMAP
+
+area.
+
+The portfolio should primarily demonstrate existing engineering evidence.
+
+==================================================
+10. ENGINEERING LAB
+==================================================
+
+The Engineering Lab currently risks looking like a future placeholder.
+
+Transform it into a real evidence-oriented engineering laboratory.
+
+The Lab should focus on:
+
+- incident response
+- Kubernetes failures
+- chaos/failure engineering
+- SRE exercises
+- performance experiments
+- observability
+- deployment safety
+- recovery
+- troubleshooting
+
+The conceptual purpose is:
+
+Projects = what I can build
+
+Labs = what I can break, diagnose, recover, and prove
+
+==================================================
+11. LAB EVIDENCE MODEL
+==================================================
+
+A lab should look conceptually like:
+
+KUBERNETES INCIDENT GAMEDAY
+
+8 / 8 scenarios completed
+
+INCIDENT CLASSES
+
+✓ scaling
+✓ service routing
+✓ EndpointSlice
+✓ PDB
+✓ storage
+✓ stateful failures
+✓ cache
+✓ workers
+
+EVIDENCE
+
+Baseline
+Failure reproduction
+Diagnosis
+RCA
+Recovery
+Final verification
+
+Actions:
+
+Explore Incidents
+Runbooks
+Evidence
+
+Again:
+
+Only use evidence that genuinely exists.
+
+==================================================
+12. CERTIFICATION SECTION
+==================================================
+
+Certification Vault is already a strong signal.
+
+Do not over-engineer it.
+
+Homepage should show only major credentials.
+
+Examples may include:
+
+AWS Solutions Architect Professional
+Azure Solutions Architect Expert
+Terraform Professional
+CKAD
+
+Keep:
+
+- badge
+- issuer
+- verification
+- credential link
+
+Provide:
+
+Open Certification Vault
+
+Do not fill the homepage with every certification.
+
+==================================================
+13. PORTFOLIO AS AN ENGINEERING SYSTEM
+==================================================
+
+Where practical, make the portfolio itself demonstrate engineering quality.
+
+For example, the site may expose REAL information such as:
+
+Portfolio build status
+Deployment status
+Repository CI status
+Test status
+Latest project activity
+
+Potential conceptual UI:
+
+// SYSTEM STATUS
+
+portfolio        ONLINE
+build            PASS
+deployment       HEALTHY
+
+or
+
+SYSTEM STATUS // PROJECT
+
+Build            PASS
+Tests            PASS
+Architecture     PASS
+Migration        PASS
+
+This is optional.
+
+CRITICAL RULE:
+
+Never fabricate telemetry.
+
+Only expose values that can be sourced reliably from actual CI, GitHub, deployment systems, project APIs, or generated static build metadata.
+
+==================================================
+14. EVIDENCE DENSITY
+==================================================
+
+The redesign should optimize for "evidence density".
+
+A recruiter should quickly see:
+
+What was built?
+What engineering problem did it solve?
+What architecture exists?
+What was actually implemented?
+How was it tested?
+How is reliability demonstrated?
+How is security demonstrated?
+Where is the source?
+Where is deeper evidence?
+
+Avoid marketing-only statements.
+
+Prefer:
+
+implemented
+tested
+validated
+reproduced
+measured
+recovered
+verified
+
+over vague claims such as:
+
+experienced with
+familiar with
+passionate about
+worked with
+
+==================================================
+15. RECRUITER READING TARGET
+==================================================
+
+Design the homepage so this approximate experience is possible:
+
+Within 5 seconds:
+Understand seniority and engineering direction.
+
+Within 15 seconds:
+Understand production / distributed systems background.
+
+Within 30 seconds:
+See meaningful cloud/platform engineering projects.
+
+Within 45 seconds:
+See reliability / incident / failure-engineering evidence.
+
+Within 60 seconds:
+Reach GitHub, CV, LinkedIn, architecture, or deep-dive project evidence.
+
+==================================================
+16. RESPONSIVE DESIGN
+==================================================
+
+The current design is visually rich.
+
+Ensure the new long-form homepage works well on:
+
+Desktop
+Laptop
+Tablet
+Mobile
+
+Do not simply stack desktop cards blindly on mobile.
+
+Preserve readability of:
+
+terminal text
+HUD components
+project evidence
+architecture summaries
+navigation
+CTAs
+
+==================================================
+17. PERFORMANCE
+==================================================
+
+Do not make the redesign unnecessarily heavy.
+
+Avoid large JS dependencies unless they clearly improve the experience.
+
+Preserve fast page loading.
+
+Lazy-load heavy visuals where appropriate.
+
+Do not add animations that interfere with reading.
+
+==================================================
+18. ACCESSIBILITY
+==================================================
+
+Maintain sufficient contrast.
+
+Keyboard navigation must work.
+
+Interactive elements need clear focus states.
+
+Respect prefers-reduced-motion where appropriate.
+
+Do not depend exclusively on color to communicate PASS / FAIL / status.
+
+==================================================
+19. CONTENT TRUTHFULNESS
+==================================================
+
+This is critical.
+
+Inspect the actual repositories before generating project evidence.
+
+Do not infer implementation from roadmap documents alone.
+
+Differentiate clearly between:
+
+Implemented
+Tested
+Experimental
+Active
+Planned
+
+Never display a feature as completed simply because it appears in a roadmap.
+
+Repository reality is the source of truth.
+
+==================================================
+20. IMPLEMENTATION APPROACH
+==================================================
+
+Before changing code:
+
+1. Audit the existing site architecture.
+2. Identify reusable components.
+3. Identify existing design tokens.
+4. Identify current deep-dive routes.
+5. Inspect engineering repositories referenced by the portfolio.
+6. Build an evidence inventory.
+7. Propose the new homepage information architecture.
+8. Implement incrementally.
+9. Preserve existing routes.
+10. Verify responsive behavior.
+11. Verify links.
+12. Run tests/build.
+13. Report exactly what changed.
+
+Do not start by deleting existing components.
+
+Reuse and refactor wherever practical.
+
+==================================================
+21. IMPORTANT DESIGN PRINCIPLE
+==================================================
+
+The old homepage says:
+
+"Choose your next area."
+
+The new homepage should communicate:
+
+"Here is the engineering evidence."
+
+But do not literally use that sentence unless it fits the visual design.
+
+The website should feel like an engineering control plane exposing systems, evidence, status, and career history.
+
+==================================================
+22. FINAL POSITIONING
+==================================================
+
+The portfolio should communicate:
+
+This is not a generic graduate portfolio.
+
+This is an experienced software engineer moving deeply into:
+
+Platform Engineering
+Site Reliability Engineering
+Cloud Infrastructure
+Distributed Systems
+Reliability Engineering
+
+The visual identity should remain distinctive.
+
+The engineering evidence should become much easier to discover.
+
+The final result should feel like:
+
+an engineer's control plane
+
+rather than:
+
+a collection of navigation cards.
+
+==================================================
+23. OUTPUT REQUIRED BEFORE IMPLEMENTATION
+==================================================
+
+Before changing code, first provide:
+
+A. Current information architecture audit
+B. Proposed homepage section structure
+C. Which existing components will be reused
+D. Which components need modification
+E. Which new components are required
+F. Evidence inventory for each project/lab
+G. Items that are implemented vs planned
+H. Proposed implementation order
+
+Do not begin implementation until this audit is complete.
+
+After the audit, proceed with the redesign.
