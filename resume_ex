@@ -76,18 +76,17 @@
   parsep=0ex
 ]
 
-  \item Designed and implemented Java/Spring Boot backend services for large-scale cluster network management, supporting configuration, monitoring, traffic shaping, congestion management, host security, and device port management workflows.
+\item Designed and implemented Java/Spring Boot backend services for two core functional modules within a five-service cluster-network management platform, covering configuration, monitoring, traffic shaping, congestion management, host security, and device-port lifecycle management.
 
-  \item Built and maintained Kubernetes-deployed microservices across test, staging, and production environments, supporting service deployment, configuration management, release validation, and operational troubleshooting.
+\item Built, deployed, and maintained Kubernetes-hosted microservices across 5--6 staging and test environments and customer production deployments, supporting configuration workflows, release validation, operational troubleshooting, quarterly showcases, and major product releases for enterprise customers.
 
-  \item Designed cross-service APIs and communication contracts using Thrift IDL, coordinating distributed service interactions and synchronizing operational state across services and in-memory data stores.
+\item Worked extensively with hundreds of Thrift IDL-based service contracts, designing and evolving cross-service interfaces and synchronising runtime operational state across distributed microservices and in-memory data stores to maintain consistent operational state across service boundaries.
 
-  \item Diagnosed production and pre-production reliability issues using application logs, distributed tracing, packet analysis, debugging tools, and static code analysis, contributing to root-cause identification and service recovery.
+\item Investigated and resolved approximately 20 high-severity production and pre-production defects annually, using distributed tracing, application logs, packet analysis, debugging tools, and static code analysis to support faster root-cause identification, service recovery, and reduced customer impact.
 
-  \item Collaborated with platform, CLI, and Linux SDK teams on cross-component integration, code reviews, release readiness, defect resolution, and delivery of changes across distributed system boundaries.
+\item Collaborated across downstream release, platform, CLI, Linux SDK, and architecture teams on cross-component integration, API evolution, release readiness, code reviews, and defect resolution across distributed system boundaries.
 
 \end{itemize}
-
 \vspace{-0.1em}
 
 \datedsubsection
