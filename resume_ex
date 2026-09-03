@@ -49,7 +49,7 @@
 
   \item Auckland-based Software Engineer with 4.5 years of professional experience, including 4 years at Huawei, working across staging, test, and production environments with Java/Spring Boot microservices, distributed systems, Kubernetes, event-driven architecture, and cloud-native platforms.
 
-  \item Hands-on cloud and platform engineering experience across AWS, Azure, Kubernetes, Terraform, CI/CD, infrastructure automation, observability, SLIs/SLOs, and reliability engineering, complemented by production troubleshooting and incident analysis experience.
+  \item Hands-on cloud, platform, and solution architecture experience across AWS and Azure, covering distributed-system design, cloud-native architectures, Kubernetes, Terraform, infrastructure automation, observability, SLIs/SLOs, reliability engineering, and production troubleshooting.
 
   \item Hands-on Generative AI platform engineering with Amazon Bedrock, including RAG, evaluation, guardrails, agent workflows, observability, and reliability patterns.
 
@@ -136,6 +136,39 @@
 \end{itemize}
 
 % ============================================================
+% SELECTED PROJECTS
+% ============================================================
+\section{\faUsers\ Selected Projects}
+
+\datedsubsection
+{\textbf{Reliant -- Distributed SaaS Reliability Engineering Platform}}
+{Ongoing}
+
+\begin{itemize}[
+  leftmargin=*,
+  itemsep=0.4ex,
+  topsep=0.4ex,
+  parsep=0ex
+]
+
+  \item Built a multi-tenant SaaS reliability prototype covering asynchronous processing, external provider integration, reconciliation, callbacks, and failure recovery.
+
+  \item Applied reliability patterns including Transactional Outbox/Inbox, idempotency, retries, dead-letter queues, circuit breaking, and callback deduplication.
+
+\end{itemize}
+% ============================================================
+% AWARDS
+% ============================================================
+
+\section{\faTrophy\ Awards \& Recognition}
+
+\begin{itemize}[parsep=0.5ex, leftmargin=*]
+
+  \item Linux Foundation LiFT Scholarship Program Awardee (Spring 2026) -- Systems \& DevOps.
+
+\end{itemize}
+
+% ============================================================
 % CERTIFICATIONS
 % ============================================================
 
@@ -156,48 +189,6 @@
   \item Microsoft Certified: Azure Administrator Associate
 
   \item AWS Certified Developer -- Associate
-
-\end{itemize}
-
-% ============================================================
-% SELECTED PROJECTS
-% ============================================================
-
-\section{\faUsers\ Selected Projects}
-
-\datedsubsection
-{\textbf{Reliant -- Multi-Cloud SaaS Reliability Engineering System}}
-{Ongoing}
-
-\vspace{0.05em}
-
-\role{Stack:}
-{.NET 10, PostgreSQL, Amazon SQS (LocalStack), Terraform, Docker, GitHub Actions}
-
-\vspace{-0.15em}
-
-\begin{itemize}[
-  leftmargin=*,
-  itemsep=0.4ex,
-  topsep=0.4ex,
-  parsep=0ex
-]
-
-  \item Built a multi-tenant SaaS system around distributed-system reliability, covering transactional processing, asynchronous messaging, external provider integration, reconciliation, callbacks, and controlled recovery workflows.
-
-  \item Implemented Transactional Outbox/Inbox, SQS-based workers, bounded retries, DLQs, idempotency, circuit breaking, callback deduplication, and reconciliation to handle worker crashes, duplicate delivery, unknown outcomes, and lost responses.
-
-\end{itemize}
-
-% ============================================================
-% AWARDS
-% ============================================================
-
-\section{\faTrophy\ Awards \& Recognition}
-
-\begin{itemize}[parsep=0.5ex, leftmargin=*]
-
-  \item Spring 2026 Linux Foundation LiFT Scholarship Program Awardee -- Systems \& DevOps category.
 
 \end{itemize}
 
