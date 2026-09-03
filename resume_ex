@@ -3,13 +3,19 @@
 % !Mode:: "TeX\:UTF-8"
 
 \documentclass{resume}
-\usepackage{zh_CN-Adobefonts_external} % Simplified Chinese Support using external fonts (./fonts/zh_CN-Adobe/)
-%\usepackage{zh_CN-Adobefonts_internal} % Simplified Chinese Support using system fonts
-\usepackage{linespacing_fix} % disable extra space before next section
+
+\usepackage{zh_CN-Adobefonts_external}
+%\usepackage{zh_CN-Adobefonts_internal}
+\usepackage{linespacing_fix}
 \usepackage{cite}
 
 \begin{document}
-\pagenumbering{gobble} % suppress displaying page number
+
+\pagenumbering{gobble}
+
+% ============================================================
+% HEADER
+% ============================================================
 
 \name{Weilai Wang}
 
@@ -26,101 +32,209 @@
 }
 
 \basicInfo{
-  \faGithub\ \href{https://github.com/miku-wwl}{miku-wwl} \textperiodcentered\
-  \faLinkedin\ \href{https://www.linkedin.com/in/wesley-w-9b34a2368/}{weilai-wesley-wang}
+  \faGithub\
+  \href{https://github.com/miku-wwl}{miku-wwl}
+  \textperiodcentered\
+  \faLinkedin\
+  \href{https://www.linkedin.com/in/wesley-w-9b34a2368/}{weilai-wesley-wang}
 }
 
-\section{\faCloud\ Professional Profile} 
-\begin{itemize}[parsep=0.5ex, leftmargin=*] 
+% ============================================================
+% PROFESSIONAL PROFILE
+% ============================================================
+
+\section{\faCloud\ Professional Profile}
+
+\begin{itemize}[parsep=0.5ex, leftmargin=*]
+
   \item Auckland-based Software Engineer with 4.5 years of professional experience, including 4 years at Huawei, working across staging, test, and production environments with Java/Spring Boot microservices, distributed systems, Kubernetes, event-driven architecture, and cloud-native platforms.
+
   \item Hands-on cloud and platform engineering experience across AWS, Azure, Kubernetes, Terraform, CI/CD, infrastructure automation, observability, SLIs/SLOs, and reliability engineering, complemented by production troubleshooting and incident analysis experience.
+
   \item Hands-on Generative AI platform engineering with Amazon Bedrock, including RAG, evaluation, guardrails, agent workflows, observability, and reliability patterns.
+
   \item Currently completing a Master of Software Engineering in Auckland; available to work up to 40 hours per week from 16 November 2026.
+
 \end{itemize}
 
-\section{\faCertificate\ Certifications} 
-\begin{itemize}[parsep=0.5ex, leftmargin=*] 
-  \item AWS Certified Generative AI Developer -- Professional
-  \item AWS Certified Solutions Architect -- Professional
-  \item HashiCorp Certified: Terraform Authoring and Operations Professional
-  \item Microsoft Certified: Azure Solutions Architect Expert
-  \item Certified Kubernetes Application Developer (CKAD)
-  \item Microsoft Certified: Azure Administrator Associate
-  \item AWS Certified Developer -- Associate
-\end{itemize}
-
-\section{\faTrophy\ Awards \& Recognition}
-\begin{itemize}[parsep=0.5ex, leftmargin=*]
-  \item Spring 2026 Linux Foundation LiFT Scholarship Program Awardee -- Systems \& DevOps category.
-\end{itemize}
-
-\section{\faCogs\ Skills} 
-\begin{itemize}[parsep=0.5ex, leftmargin=*]
-\item \textbf{Backend \& Distributed Systems:}
-Java, Spring Boot, Spring Cloud, REST APIs, microservices, event-driven architecture, serverless architecture, PostgreSQL, Redis, message queues
-\item \textbf{Cloud \& Platform:}
-AWS, Azure, Kubernetes, Docker, Terraform, Linux, Kustomize, GitHub Actions, CI/CD, Argo CD, Istio
-\item \textbf{Reliability \& Observability:}
-Prometheus, Grafana, Loki, Jaeger, CloudWatch, SLIs/SLOs, incident response, troubleshooting, root-cause analysis
-\item \textbf{AI Platform:}
-Amazon Bedrock, RAG, Knowledge Bases, Bedrock Agents, Guardrails, Model Evaluation, Cross-Region Inference\end{itemize}
+% ============================================================
+% WORK EXPERIENCE
+% ============================================================
 
 \section{\faBriefcase\ Work Experience}
-\datedsubsection{\textbf{Huawei Technologies Co., Ltd. -- Software Engineer}}{12.2021 -- 12.2025}
+
+\datedsubsection
+{\textbf{Huawei Technologies Co., Ltd. -- Software Engineer}}
+{12.2021 -- 12.2025}
+
 \role{}{Cluster Computing Network Development Department}
-\begin{onehalfspacing}
-\begin{itemize}
-\item Designed and implemented Java/Spring Boot backend services for large-scale cluster network management, supporting configuration, monitoring, traffic shaping, congestion management, host security, and device port management workflows.
-\item Built and maintained Kubernetes-deployed microservices across test, staging, and production environments, supporting service deployment, configuration management, release validation, and operational troubleshooting.
-\item Designed cross-service APIs and communication contracts using Thrift IDL, coordinating distributed service interactions and synchronizing operational state across services and in-memory data stores.
-\item Diagnosed production and pre-production reliability issues using application logs, distributed tracing, packet analysis, debugging tools, and static code analysis, contributing to root-cause identification and service recovery.
-\item Collaborated with platform, CLI, and Linux SDK teams on cross-component integration, code reviews, release readiness, defect resolution, and delivery of changes across distributed system boundaries.
+
+\begin{itemize}[
+  leftmargin=*,
+  itemsep=0.5ex,
+  topsep=0.5ex,
+  parsep=0ex
+]
+
+  \item Designed and implemented Java/Spring Boot backend services for large-scale cluster network management, supporting configuration, monitoring, traffic shaping, congestion management, host security, and device port management workflows.
+
+  \item Built and maintained Kubernetes-deployed microservices across test, staging, and production environments, supporting service deployment, configuration management, release validation, and operational troubleshooting.
+
+  \item Designed cross-service APIs and communication contracts using Thrift IDL, coordinating distributed service interactions and synchronizing operational state across services and in-memory data stores.
+
+  \item Diagnosed production and pre-production reliability issues using application logs, distributed tracing, packet analysis, debugging tools, and static code analysis, contributing to root-cause identification and service recovery.
+
+  \item Collaborated with platform, CLI, and Linux SDK teams on cross-component integration, code reviews, release readiness, defect resolution, and delivery of changes across distributed system boundaries.
+
 \end{itemize}
-\end{onehalfspacing}
 
-\datedsubsection{\textbf{OKX -- Java Software Engineer Intern}}{07.2021 -- 10.2021}
-\begin{onehalfspacing}
-\begin{itemize}
-\item Contributed to a replay service for a core matching system, using Aeron Archive to record and replay event streams for trading state reconstruction and recovery after failures.
+\vspace{-0.1em}
 
-\item Worked on event-driven, high-performance, and reliability-sensitive Java backend systems, supporting replay-based recovery, fault investigation, auditing, and downstream market data workflows.
+\datedsubsection
+{\textbf{OKX -- Java Software Engineer Intern}}
+{07.2021 -- 10.2021}
 
-\item Developed and tested Java backend components using Maven and Spring Cloud, including distributed debugging and performance-oriented validation.
+\begin{itemize}[
+  leftmargin=*,
+  itemsep=0.4ex,
+  topsep=0.4ex,
+  parsep=0ex
+]
+
+  \item Contributed to a replay service for a core matching system using Aeron Archive to record and replay event streams for trading state reconstruction and recovery after failures.
+
+  \item Worked on event-driven, high-performance Java backend systems using Spring Cloud and Maven, supporting replay-based recovery, fault investigation, auditing, distributed debugging, and downstream market data workflows.
+
 \end{itemize}
-\end{onehalfspacing}
+
+% ============================================================
+% PAGE 2
+% ============================================================
+
+\newpage
+
+% ============================================================
+% SKILLS
+% ============================================================
+
+\section{\faCogs\ Skills}
+
+\begin{itemize}[parsep=0.5ex, leftmargin=*]
+
+  \item \textbf{Backend \& Distributed Systems:}
+  Java, Spring Boot, Spring Cloud, REST APIs, microservices, event-driven architecture, serverless architecture, PostgreSQL, Redis, message queues
+
+  \item \textbf{Cloud \& Platform:}
+  AWS, Azure, Kubernetes, Docker, Terraform, Linux, Kustomize, GitHub Actions, CI/CD, Argo CD, Istio
+
+  \item \textbf{Reliability \& Observability:}
+  Prometheus, Grafana, Loki, Jaeger, CloudWatch, SLIs/SLOs, incident response, troubleshooting, root-cause analysis
+
+  \item \textbf{AI Platform:}
+  Amazon Bedrock, RAG, Knowledge Bases, Bedrock Agents, Guardrails, Model Evaluation, Cross-Region Inference
+
+\end{itemize}
+
+% ============================================================
+% CERTIFICATIONS
+% ============================================================
+
+\section{\faCertificate\ Certifications}
+
+\begin{itemize}[parsep=0.5ex, leftmargin=*]
+
+  \item AWS Certified Generative AI Developer -- Professional
+
+  \item AWS Certified Solutions Architect -- Professional
+
+  \item HashiCorp Certified: Terraform Authoring and Operations Professional
+
+  \item Microsoft Certified: Azure Solutions Architect Expert
+
+  \item Certified Kubernetes Application Developer (CKAD)
+
+  \item Microsoft Certified: Azure Administrator Associate
+
+  \item AWS Certified Developer -- Associate
+
+\end{itemize}
+
+% ============================================================
+% SELECTED PROJECTS
+% ============================================================
 
 \section{\faUsers\ Selected Projects}
 
-\datedsubsection{\textbf{Reliant -- Multi-Cloud SaaS Reliability Engineering System}}{Ongoing}
+\datedsubsection
+{\textbf{Reliant -- Multi-Cloud SaaS Reliability Engineering System}}
+{Ongoing}
 
-\vspace{0.1em}
-\role{Stack:}{.NET 10, PostgreSQL, Amazon SQS (LocalStack), Terraform, Docker, GitHub Actions}
+\vspace{0.05em}
 
-\vspace{-0.1em}
-\begin{onehalfspacing}
-\begin{itemize}[leftmargin=*, itemsep=0.35ex, topsep=0.3ex, parsep=0.2ex]
+\role{Stack:}
+{.NET 10, PostgreSQL, Amazon SQS (LocalStack), Terraform, Docker, GitHub Actions}
 
-\item Built a multi-tenant SaaS system designed around distributed-system reliability, covering transactional request processing, asynchronous messaging, external provider integration, reconciliation, callbacks, and controlled recovery workflows.
+\vspace{-0.15em}
 
-\item Implemented reliable asynchronous processing using the Transactional Outbox and Inbox patterns, Amazon SQS, background workers, bounded retries, dead-letter handling, idempotent processing, and at-least-once delivery semantics.
+\begin{itemize}[
+  leftmargin=*,
+  itemsep=0.4ex,
+  topsep=0.4ex,
+  parsep=0ex
+]
 
-\item Designed failure-safe external provider workflows covering unknown outcomes, safe retries, provider idempotency, circuit breaking, callback deduplication, concurrent reconciliation, and recovery from worker crashes and lost responses.
+  \item Built a multi-tenant SaaS system around distributed-system reliability, covering transactional processing, asynchronous messaging, external provider integration, reconciliation, callbacks, and controlled recovery workflows.
+
+  \item Implemented Transactional Outbox/Inbox, SQS-based workers, bounded retries, DLQs, idempotency, circuit breaking, callback deduplication, and reconciliation to handle worker crashes, duplicate delivery, unknown outcomes, and lost responses.
 
 \end{itemize}
-\end{onehalfspacing}
+
+% ============================================================
+% AWARDS
+% ============================================================
+
+\section{\faTrophy\ Awards \& Recognition}
+
+\begin{itemize}[parsep=0.5ex, leftmargin=*]
+
+  \item Spring 2026 Linux Foundation LiFT Scholarship Program Awardee -- Systems \& DevOps category.
+
+\end{itemize}
+
+% ============================================================
+% EDUCATION
+% ============================================================
 
 \section{\faGraduationCap\ Education}
 
-\datedsubsection{\textbf{Yoobee College of Creative Innovation}}{04.2026 -- 04.2027}
+\datedsubsection
+{\textbf{Yoobee College of Creative Innovation}}
+{04.2026 -- 04.2027}
+
 \textit{Master of Software Engineering}
 
-\datedsubsection{\textbf{University of Technology Sydney}}{07.2020 -- 08.2021}
-\textit{Master of Engineering:} Software Systems Engineering
+\vspace{-0.15em}
 
-\datedsubsection{\textbf{University of Technology Sydney}}{07.2019 -- 07.2020}
-\textit{Bachelor of Science (Honours) in Information Technology:} First Class Honours
+\datedsubsection
+{\textbf{University of Technology Sydney}}
+{07.2020 -- 08.2021}
 
-\datedsubsection{\textbf{Nanjing University of Aeronautics and Astronautics}}{09.2016 -- 10.2020}
-\textit{Bachelor's Degree:} Software Engineering
+\textit{Master of Engineering -- Software Systems Engineering}
+
+\vspace{-0.15em}
+
+\datedsubsection
+{\textbf{University of Technology Sydney}}
+{07.2019 -- 07.2020}
+
+\textit{BSc (Honours) in Information Technology -- First Class Honours}
+
+\vspace{-0.15em}
+
+\datedsubsection
+{\textbf{Nanjing University of Aeronautics and Astronautics}}
+{09.2016 -- 10.2020}
+
+\textit{Bachelor of Software Engineering}
 
 \end{document}
