@@ -13,6 +13,13 @@
 
 \name{Weilai Wang}
 
+\vspace{-0.3em}
+\begin{center}
+  \normalsize
+  Software Engineering for Reliable, Cloud-Native \& AI Systems
+\end{center}
+\vspace{-0.3em}
+
 \basicInfo{
   \email{weilai.ire@outlook.com} \textperiodcentered\
   \phone{(+64) 29 027 48387}
@@ -20,24 +27,26 @@
 
 \basicInfo{
   \faGithub\ \href{https://github.com/miku-wwl}{miku-wwl} \textperiodcentered\
-  \faLinkedin\ \href{https://www.linkedin.com/in/weilai-wesley-wang-9b34a2368/}{weilai-wesley-wang}
+  \faLinkedin\ \href{https://www.linkedin.com/in/wesley-w-9b34a2368/}{weilai-wesley-wang}
 }
 
-\section{\faCloud\ Professional Profile}
-\begin{itemize}[parsep=0.5ex, leftmargin=*]
-  \item Currently completing a Master of Software Engineering in Auckland, with 4+ years of professional experience, including 4 years at Huawei and backend engineering experience at OKX. Available to work up to 40 hours per week from 16 November 2026.
-  \item Backend and platform-oriented engineer with experience in Java/Spring Boot microservices, Kubernetes-based services, distributed systems, event-driven architecture, production debugging, code review, and cross-team engineering delivery.
-  \item Hands-on experience with replay-based recovery for reconstructing trading state after failures, complemented by an independently built Kubernetes-native replay orchestration implementation using message queues and KEDA autoscaling.
-  \item Practical cloud-native skill set covering AWS, Azure, Kubernetes, Terraform, CI/CD, observability, incident response, SLIs/SLOs, and reliability engineering.
+\section{\faCloud\ Professional Profile} 
+\begin{itemize}[parsep=0.5ex, leftmargin=*] 
+  \item Auckland-based Software Engineer with 4.5 years of professional experience, including 4 years at Huawei, working across staging, test, and production environments with Java/Spring Boot microservices, distributed systems, Kubernetes, event-driven architecture, and cloud-native platforms.
+  \item Hands-on cloud and platform engineering experience across AWS, Azure, Kubernetes, Terraform, CI/CD, infrastructure automation, observability, SLIs/SLOs, and reliability engineering, complemented by production troubleshooting and incident analysis experience.
+  \item Hands-on Generative AI platform engineering with Amazon Bedrock, including RAG, evaluation, guardrails, agent workflows, observability, and reliability patterns.
+  \item Currently completing a Master of Software Engineering in Auckland; available to work up to 40 hours per week from 16 November 2026.
 \end{itemize}
 
-\section{\faCertificate\ Certifications}
-\begin{itemize}[parsep=0.5ex, leftmargin=*]
+\section{\faCertificate\ Certifications} 
+\begin{itemize}[parsep=0.5ex, leftmargin=*] 
+  \item AWS Certified Generative AI Developer -- Professional
+  \item AWS Certified Solutions Architect -- Professional
   \item HashiCorp Certified: Terraform Authoring and Operations Professional
-  \item AWS Certified Solutions Architect -- Professional (AWS SAP)
-  \item Microsoft Certified: Azure Solutions Architect Expert (AZ-104 + AZ-305)
+  \item Microsoft Certified: Azure Solutions Architect Expert
   \item Certified Kubernetes Application Developer (CKAD)
-  \item AWS Certified Developer -- Associate (AWS DVA)
+  \item Microsoft Certified: Azure Administrator Associate
+  \item AWS Certified Developer -- Associate
 \end{itemize}
 
 \section{\faTrophy\ Awards \& Recognition}
@@ -45,30 +54,27 @@
   \item Spring 2026 Linux Foundation LiFT Scholarship Program Awardee -- Systems \& DevOps category.
 \end{itemize}
 
-\section{\faCogs\ Skills}
+\section{\faCogs\ Skills} 
 \begin{itemize}[parsep=0.5ex, leftmargin=*]
-\item \textbf{Backend:} Java, Spring Boot, Spring Cloud, Node.js, REST APIs
-\item \textbf{Frontend:} TypeScript, React
-\item \textbf{Data \& Messaging:} PostgreSQL, MySQL, Redis, Message Queues, Aeron Archive
-\item \textbf{Platform Engineering:} Terraform, Docker, Kubernetes, Kustomize, GitHub Actions, CI/CD, Argo CD, Argo Rollouts with Istio-based canary traffic management
-\item \textbf{Cloud:} AWS IAM, VPC, EC2, S3, RDS, Lambda, CloudWatch; Azure VNet, AKS, Azure Monitor, Log Analytics
-\end{itemize}
+\item \textbf{Backend \& Distributed Systems:}
+Java, Spring Boot, Spring Cloud, REST APIs, microservices, event-driven architecture, serverless architecture, PostgreSQL, Redis, message queues
+\item \textbf{Cloud \& Platform:}
+AWS, Azure, Kubernetes, Docker, Terraform, Linux, Kustomize, GitHub Actions, CI/CD, Argo CD, Istio
+\item \textbf{Reliability \& Observability:}
+Prometheus, Grafana, Loki, Jaeger, CloudWatch, SLIs/SLOs, incident response, troubleshooting, root-cause analysis
+\item \textbf{AI Platform:}
+Amazon Bedrock, RAG, Knowledge Bases, Bedrock Agents, Guardrails, Model Evaluation, Cross-Region Inference\end{itemize}
 
 \section{\faBriefcase\ Work Experience}
-
 \datedsubsection{\textbf{Huawei Technologies Co., Ltd. -- Software Engineer}}{12.2021 -- 12.2025}
 \role{}{Cluster Computing Network Development Department}
 \begin{onehalfspacing}
 \begin{itemize}
-\item Designed and implemented backend services for cluster network management systems, covering configuration, monitoring, traffic shaping, congestion management, host security, and device port management scenarios.
-
-\item Built and maintained Spring Boot-based microservices deployed on Kubernetes, supporting scalable service delivery, consistent deployment workflows, and long-term maintainability.
-
-\item Defined cross-service communication interfaces using Thrift IDL and synchronized operational data across distributed services and in-memory data stores.
-
-\item Investigated defects and reliability issues using static code scanning, debugging tools, logs, distributed tracing, packet analysis, and production troubleshooting.
-
-\item Participated in Agile delivery, requirement analysis, code reviews, technical documentation, sprint planning, and cross-team collaboration with CLI and Linux SDK teams.
+\item Designed and implemented Java/Spring Boot backend services for large-scale cluster network management, supporting configuration, monitoring, traffic shaping, congestion management, host security, and device port management workflows.
+\item Built and maintained Kubernetes-deployed microservices across test, staging, and production environments, supporting service deployment, configuration management, release validation, and operational troubleshooting.
+\item Designed cross-service APIs and communication contracts using Thrift IDL, coordinating distributed service interactions and synchronizing operational state across services and in-memory data stores.
+\item Diagnosed production and pre-production reliability issues using application logs, distributed tracing, packet analysis, debugging tools, and static code analysis, contributing to root-cause identification and service recovery.
+\item Collaborated with platform, CLI, and Linux SDK teams on cross-component integration, code reviews, release readiness, defect resolution, and delivery of changes across distributed system boundaries.
 \end{itemize}
 \end{onehalfspacing}
 
