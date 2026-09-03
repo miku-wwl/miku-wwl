@@ -76,16 +76,15 @@
   parsep=0ex
 ]
 
-\item Designed and implemented Java/Spring Boot backend services for two core functional modules within a five-service cluster-network management platform, covering configuration, monitoring, traffic shaping, congestion management, host security, and device-port lifecycle management.
+\item Designed and implemented Java/Spring Boot backend services for two core functional modules within a five-service cluster network management platform, covering configuration, monitoring, traffic shaping, congestion management, host security, and device port lifecycle management.
 
-\item Built, deployed, and maintained Kubernetes-hosted microservices across 5--6 staging and test environments and customer production deployments, supporting configuration workflows, release validation, operational troubleshooting, quarterly showcases, and major product releases for enterprise customers.
+\item Built and maintained Kubernetes-deployed microservices across 5--6 staging and test environments and customer production deployments, supporting configuration workflows, release validation, operational troubleshooting, quarterly showcases, and major product releases for enterprise customers.
 
-\item Worked extensively with hundreds of Thrift IDL-based service contracts, designing and evolving cross-service interfaces and synchronising runtime operational state across distributed microservices and in-memory data stores to maintain consistent operational state across service boundaries.
+\item Worked extensively with hundreds of Thrift IDL-based service contracts, designing and evolving cross-service interfaces and synchronising runtime operational state across distributed microservices and in-memory data stores to maintain consistency across service boundaries.
 
 \item Investigated and resolved approximately 20 high-severity production and pre-production defects annually, using distributed tracing, application logs, packet analysis, debugging tools, and static code analysis to support faster root-cause identification, service recovery, and reduced customer impact.
 
 \item Collaborated across downstream release, platform, CLI, Linux SDK, and architecture teams on cross-component integration, API evolution, release readiness, code reviews, and defect resolution across distributed system boundaries.
-
 \end{itemize}
 \vspace{-0.1em}
 
