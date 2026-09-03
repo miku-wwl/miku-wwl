@@ -1,7 +1,7 @@
-# Agent Flight Recorder — Microsoft Agent-a-Thon 最终方案 v2
+# Agent Flight Recorder — Microsoft Agent-a-Thon 最终方案 v2.1
 
 > **定位：Production Reliability for Microsoft Foundry Agents**  
-> **目标：冲击 Microsoft Agent-a-Thon Asia 区 Top 6**  
+> **目标：冲击 Microsoft Agent-a-Thon Global Top 18**  
 > **核心原则：不做普通 Agent Demo，而是做真正的 Agent Reliability Platform。**
 
 ---
@@ -109,7 +109,7 @@ Contain
                                       │
                                       ▼
                          ┌──────────────────────────┐
-                         │ Azure API Management     │
+                         │ External Router / APIM   │
                          │                          │
                          │ Session-aware Routing    │
                          │ Stable / Canary Routing  │
@@ -119,8 +119,8 @@ Contain
                            │                     │
                            ▼                     ▼
                  ┌─────────────────┐   ┌─────────────────┐
-                 │ Stable Agent v1 │   │ Canary Agent v2 │
-                 │      95%        │   │       5%        │
+                 │ Hosted Endpoint v1 │   │ Hosted Endpoint v2 │
+                 │      95%          │   │        5%          │
                  └────────┬────────┘   └────────┬────────┘
                           │                     │
                           └──────────┬──────────┘
@@ -691,6 +691,8 @@ Recommended remediation
 
 # 10. Canary Release Architecture
 
+> **实现约束：Foundry Hosted Agent 的单个 endpoint 不支持在多个 Agent version 之间做流量切分。Stable v1 和 Candidate v2 必须部署为两个独立 Hosted Agent endpoints，由外部 Router / APIM 负责 95/5 权重和 session affinity。**
+
 ```text
                        Release Candidate v2
                                │
@@ -706,14 +708,14 @@ Recommended remediation
                Deploy       Evaluate       Route
                   │            │            │
                   ▼            ▼            ▼
-            Foundry v2   Eval Dataset   APIM Canary
+            Endpoint v2   Eval Dataset   Router / APIM
                                               │
                                     ┌─────────┴─────────┐
                                     │                   │
                                   95%                  5%
                                     │                   │
                                     ▼                   ▼
-                              Stable v1           Candidate v2
+                              Hosted Endpoint v1    Hosted Endpoint v2
                                     │                   │
                                     └─────────┬─────────┘
                                               │
@@ -755,20 +757,20 @@ Recommended remediation
 
 # 11. Canary Routing
 
-Foundry Agent Version 不直接承担完整的 Canary Routing。
+Foundry Hosted Agent 的**单个 endpoint 不支持 version-to-version traffic splitting**。
 
-由：
+因此 Canary 必须放在 Hosted Agent endpoint 之外，由：
 
 ```text
-Azure API Management
+External Router / Azure API Management
 ```
 
-作为前置入口。
+作为前置入口，并把 Stable v1 与 Candidate v2 部署为两个独立 Hosted Agent endpoints。
 
 基本模式：
 
 ```text
-Stable Agent v1       Candidate Agent v2
+Stable Endpoint v1    Candidate Endpoint v2
       ▲                       ▲
       │                       │
      95%                      5%
@@ -776,7 +778,7 @@ Stable Agent v1       Candidate Agent v2
       └───────────┬───────────┘
                   │
                   ▼
-                APIM
+          Router / APIM
 ```
 
 必须注意：
@@ -945,9 +947,9 @@ Reliability Gate FAIL
         ↓
 Promotion blocked
         ↓
-Candidate v2 rollback
+Candidate Endpoint v2 removed from routing
         ↓
-Stable v1 restored
+Router returns 100% traffic to Stable Endpoint v1
 ```
 
 UI：
@@ -1017,7 +1019,7 @@ Deploy Candidate
       ↓
 Wait Ready
       ↓
-Start 5% Canary
+Route 5% sessions to Candidate Endpoint v2
       ↓
 Collect Metrics
       ↓
@@ -1040,7 +1042,7 @@ PASS?
 
 ```text
 deploy_candidate()
-set_canary_weight()
+set_router_weight()
 query_reliability_metrics()
 evaluate_release_gate()
 promote_candidate()
@@ -1181,6 +1183,7 @@ afr.release.regression.detected
 trace_id
 conversation_id
 agent_version
+agent_endpoint
 release_id
 tool_name
 tool_call_id
@@ -1767,12 +1770,13 @@ release.created
 
 ---
 
-## H8 — APIM Canary Routing — 2h
+## H8 — External Canary Routing — 2h
 
 搞懂：
 
 ```text
-backend pool
+two independent Hosted Agent endpoints
+backend pool / router targets
 weighted routing
 session affinity
 ```
@@ -1781,10 +1785,10 @@ session affinity
 
 ```text
 95%
-Stable v1
+Hosted Endpoint v1
 
 5%
-Candidate v2
+Hosted Endpoint v2
 ```
 
 总学习预算：
@@ -1929,8 +1933,9 @@ runtime-benchmark.md
 完成：
 
 ```text
-APIM routing
-Stable / Candidate
+external router / APIM routing
+two Hosted Agent endpoints
+Stable Endpoint / Candidate Endpoint
 5% canary
 session affinity
 Reliability Gate
@@ -2018,8 +2023,8 @@ Minimal UI
 在 P0 完成之后立刻做：
 
 ```text
-Stable v1
-Candidate v2
+Hosted Endpoint v1
+Hosted Endpoint v2
 5% Canary
 Reliability Gate
 Automatic Rollback
@@ -2031,7 +2036,7 @@ Release Panel
 最小实现甚至可以只做：
 
 ```text
-5%
+5% sessions → Candidate Endpoint v2
 → evaluate
 → PASS / FAIL
 → promote / rollback
@@ -2110,7 +2115,7 @@ Web Search
 
 目标：
 
-> **Asia Top 6**
+> **Global Top 18**
 
 围绕三个方向反向设计。
 
