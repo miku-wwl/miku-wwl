@@ -1,0 +1,161 @@
+Senior+ Production Troubleshooting — 5 Phase Materials
+Phase 1 — ULTRA GameDay Foundation
+时间：48–60h
+材料：
+01_kubernetes_java_postgres.md
+02_linux_http_tls_networking.md
+03_terraform_localstack_connectivity.md
+04_java_postgres_resource_exhaustion.md
+05_cicd_rollout_reliability.md
+06_observability_distributed_dependency.md
+07_dns_tls_downstream_latency.md
+08_queue_backpressure_cascading_failure.md
+训练方式：
+8 周
+每周 6 小时
+3h diagnosis
+3h mitigation / repair / hardening / RCA
+Codex 负责辅助调查
+必须包含 false leads、跨层故障、真实 telemetry
+目标：
+建立 Senior 级复杂事故定位基本盘。
+Phase 2 — SadServers Pro+
+时间：25–80h
+材料：
+SadServers Pro+
+优先 Fix
+优先 Hard
+重点：
+Linux
+DNS
+TLS
+Networking
+Docker
+Kubernetes
+PostgreSQL
+Redis
+RabbitMQ
+Terraform
+Prometheus
+工作方式：
+Local Terminal ↓ SSH ↓ SadServers VM ↓ Codex CLI + shell tools 
+目标：
+验证在完全陌生环境里的 troubleshooting 可迁移能力。
+Phase 3 — Research-Grade GitHub SRE Benchmarks
+时间：120–500h+
+核心材料：
+1. SREGym
+github.com/SREGym/SREGym
+Live SRE incidents
+Kubernetes
+networking
+Linux
+distributed systems
+AI-agent benchmark
+2. IBM ITBench
+github.com/itbench-hub/ITBench
+Enterprise SRE benchmark
+Kubernetes
+logs
+metrics
+traces
+remediation
+3. Coroot RCA Lab
+github.com/coroot/rca-lab
+Java / Go / Python / Node / Rust / PHP
+PostgreSQL / MySQL / MongoDB / Valkey
+Kafka
+OpenTelemetry
+Real failure mechanisms
+4. Microsoft AIOpsLab
+github.com/microsoft/AIOpsLab
+AIOps Agent
+Kubernetes
+fault injection
+automated incident evaluation
+5. MicroRemed
+github.com/LLM4AIOps/MicroRemed
+Train-Ticket
+Online Boutique
+diagnosis → executable remediation
+6. MicroCBR
+github.com/Fengrui-Liu/MicroCBR
+Train-Ticket
+Sock Shop
+Online Boutique
+network / CPU / memory / DNS / JVM / HTTP faults
+推荐顺序：
+Coroot RCA Lab → SREGym → ITBench → MicroRemed → AIOpsLab → MicroCBR 
+目标：
+进入 Senior+ / research-grade AI-native troubleshooting。
+Phase 4 — Large Distributed-System Testbeds
+时间：60–200h
+核心材料：
+Train-Ticket
+github.com/FudanSELab/train-ticket
+大型微服务系统：
+Java / Spring Boot
+Go
+Python
+Node.js
+MongoDB
+MySQL
+Train-Ticket Fault Injection Forks
+重点使用：
+faulty branches
+fault injection
+Kubernetes
+Jaeger
+metrics
+DeathStarBench
+github.com/delimitrou/DeathStarBench
+包括：
+Social Network
+Media Service
+Hotel Reservation
+ChaosStarBench
+github.com/gwinch97/ChaosStarBench
+DeathStarBench
+Chaos Mesh
+Jaeger
+distributed fault experiments
+重点故障：
+latency
+packet loss
+network partition
+CPU / memory pressure
+DB slowdown
+retry amplification
+timeout mismatch
+cache failure
+queue backlog
+JVM GC
+DNS / TLS
+目标：
+训练大型分布式系统 causal reasoning。
+Phase 5 — AWS Official Hands-on Validation
+时间：35–80h
+完成 AWS Hands-on Microcredentials：
+AWS Application Networking Demonstrated
+AWS Serverless Demonstrated
+AWS Incident Response Demonstrated
+AWS Data Streaming Demonstrated
+AWS Agentic AI Demonstrated
+AWS MLOps Demonstrated
+AWS Data Lakehouse Demonstrated
+AWS Data Visualization Demonstrated
+最终组合：
+AWS SAP + AWS Hands-on Microcredentials ×8 + Senior+ Troubleshooting Portfolio 
+目标：
+用 AWS 官方 hands-on 环境验证云端实战能力。
+总体路线
+Phase 1 8 × 6h ULTRA GameDays ↓ Phase 2 SadServers Pro+ Hard/Fix ↓ Phase 3 SREGym / ITBench / Coroot / AIOpsLab / MicroRemed / MicroCBR ↓ Phase 4 Train-Ticket / DeathStarBench / ChaosStarBench ↓ Phase 5 AWS Microcredentials ×8 
+总投入
+合理完成：
+约 300–450h
+重度完成：
+约 500–900h+
+最终目标：
+Senior+ Production Troubleshooting & Incident Response
+LinkedIn 可用：
+Senior+ Production Troubleshooting | SRE & Platform Engineering | Incident Response
