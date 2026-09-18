@@ -5,3 +5,4 @@ halter 的开源仓，，做一下超大项目，aws 大规模编排，，聊天
 agent 200问，，学一下。
 mcp的本地实现，练习一下。
 Go + Kubebuilder 最小 CRD 实战  这个学习一下。
+kube-platform-control-plane-advanced-design.md  ，，，kube-platform-control-plane 这个增强功能，部署完成之后，，你去补齐一下。
