@@ -6,3 +6,14 @@ agent 200问，，学一下。
 mcp的本地实现，练习一下。
 Go + Kubebuilder 最小 CRD 实战  这个学习一下。
 kube-platform-control-plane-advanced-design-v2.md ，，，kube-platform-control-plane 这个增强功能，部署完成之后，，你去补齐一下。
+
+
+
+理解 → 设计 → Freeze → 实现 → 验证 → Harden → Freeze → 教程/学习材料
+可以，后续就按这个顺序：
+1. Temporal + AWS Bedrock AgentCore Demo
+   https://github.com/temporal-community/agentcore-with-temporal
+2. Temporal 官方 Python Samples
+   https://github.com/temporalio/samples-python
+3. Temporal Python SDK
+   https://github.com/temporalio/sdk-python
