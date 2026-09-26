@@ -1,146 +1,13 @@
-% !TEX TS-program = xelatex
-% !TEX encoding = UTF-8 Unicode
-% !Mode:: "TeX\:UTF-8"
-
-\documentclass{resume}
-
-\usepackage{zh_CN-Adobefonts_external}
-%\usepackage{zh_CN-Adobefonts_internal}
-\usepackage{linespacing_fix}
-\usepackage{cite}
-
-\begin{document}
-
-\pagenumbering{gobble}
-
-% ============================================================
-% HEADER
-% ============================================================
-
-\name{Weilai Wang}
-
-\vspace{-0.3em}
-\begin{center}
-  \normalsize
-  Software Engineering for Reliable, Cloud-Native \& AI Systems
-\end{center}
-\vspace{-0.3em}
-
-\basicInfo{
-  \email{weilai.ire@outlook.com} \textperiodcentered\
-  \phone{(+64) 20 4145 7459}
-}
-
-\basicInfo{
-  \faGithub\
-  \href{https://github.com/miku-wwl}{miku-wwl}
-  \textperiodcentered\
-  \faLinkedin\
-  \href{https://www.linkedin.com/in/wesley-w-9b34a2368/}{weilai-wesley-wang}
-}
-
-% ============================================================
-% PROFESSIONAL PROFILE
-% ============================================================
-
-\section{\faCloud\ Professional Profile}
-
-\begin{itemize}[parsep=0.5ex, leftmargin=*]
-
-  \item Auckland-based Software Engineer with 4.5 years of professional experience, including 4 years at Huawei, working across staging, test, and production environments with Java/Spring Boot microservices, distributed systems, Kubernetes, event-driven architecture, and cloud-native platforms.
-
-  \item Hands-on cloud, platform, and solution architecture experience across AWS and Azure, covering distributed-system design, cloud-native architectures, Kubernetes, Terraform, infrastructure automation, observability, SLIs/SLOs, reliability engineering, and production troubleshooting.
-
-  \item Hands-on Generative AI platform engineering with Amazon Bedrock, including RAG, evaluation, guardrails, agent workflows, observability, and reliability patterns.
-
-  \item Currently completing a Master of Software Engineering in Auckland; available to work up to 40 hours per week from 16 November 2026.
-
-\end{itemize}
-
-% ============================================================
-% WORK EXPERIENCE
-% ============================================================
-
-\section{\faBriefcase\ Work Experience}
-
-\datedsubsection
-{\textbf{Huawei Technologies Co., Ltd. -- Software Engineer}}
-{12.2021 -- 12.2025}
-
-\role{}{Cluster Computing Network Development Department}
-
-\begin{itemize}[
-  leftmargin=*,
-  itemsep=0.5ex,
-  topsep=0.5ex,
-  parsep=0ex
-]
-
-\item Designed and implemented Java/Spring Boot backend services for two core functional modules within a five-service cluster network management platform, covering configuration, monitoring, traffic shaping, congestion management, host security, and device port lifecycle management.
-
-\item Built and maintained Kubernetes-deployed microservices across 5--6 staging and test environments and customer production deployments, supporting configuration workflows, release validation, operational troubleshooting, quarterly showcases, and major product releases for enterprise customers.
-
-\item Worked extensively with hundreds of Thrift IDL-based service contracts, designing and evolving cross-service interfaces and synchronising runtime operational state across distributed microservices and in-memory data stores to maintain consistency across service boundaries.
-
-\item Investigated and resolved approximately 20 high-severity production and pre-production defects annually, using distributed tracing, application logs, packet analysis, debugging tools, and static code analysis to support faster root-cause identification, service recovery, and reduced customer impact.
-
-\item Collaborated across downstream release, platform, CLI, Linux SDK, and architecture teams on cross-component integration, API evolution, release readiness, code reviews, and defect resolution across distributed system boundaries.
-\end{itemize}
-\vspace{-0.1em}
-
-\datedsubsection
-{\textbf{OKX -- Java Software Engineer Intern}}
-{07.2021 -- 10.2021}
-
-\begin{itemize}[
-  leftmargin=*,
-  itemsep=0.4ex,
-  topsep=0.4ex,
-  parsep=0ex
-]
-
-  \item Contributed to a replay service for a core matching system using Aeron Archive to record and replay event streams for trading state reconstruction and recovery after failures.
-
-  \item Worked on event-driven, high-performance Java backend systems using Spring Cloud and Maven, supporting replay-based recovery, fault investigation, auditing, distributed debugging, and downstream market data workflows.
-
-\end{itemize}
-
-% ============================================================
-% PAGE 2
-% ============================================================
-
-\newpage
-
-% ============================================================
-% SKILLS
-% ============================================================
-
-\section{\faCogs\ Skills}
-
-\begin{itemize}[parsep=0.5ex, leftmargin=*]
-
-  \item \textbf{Backend \& Distributed Systems:}
-  Java, Spring Boot, Spring Cloud, REST APIs, microservices, event-driven architecture, serverless architecture, PostgreSQL, Redis, message queues
-
-  \item \textbf{Cloud \& Platform:}
-  AWS, Azure, Kubernetes, Docker, Terraform, Linux, Kustomize, GitHub Actions, CI/CD, Argo CD, Istio
-
-  \item \textbf{Reliability \& Observability:}
-  Prometheus, Grafana, Loki, Jaeger, CloudWatch, SLIs/SLOs, incident response, troubleshooting, root-cause analysis
-
-  \item \textbf{AI Platform:}
-  Amazon Bedrock, RAG, Knowledge Bases, Bedrock Agents, Guardrails, Model Evaluation, Cross-Region Inference
-
-\end{itemize}
-
+```latex
 % ============================================================
 % SELECTED PROJECTS
 % ============================================================
+
 \section{\faUsers\ Selected Projects}
 
 \datedsubsection
-{\textbf{Reliant -- Distributed SaaS Reliability Engineering Platform}}
-{Ongoing}
+{\textbf{kube-platform-control-plane -- Kubernetes Platform Control Plane}}
+{2026}
 
 \begin{itemize}[
   leftmargin=*,
@@ -149,81 +16,32 @@
   parsep=0ex
 ]
 
-  \item Built a multi-tenant SaaS reliability prototype covering asynchronous processing, external provider integration, reconciliation, callbacks, and failure recovery.
+  \item Built a Kubernetes-native control plane in Go for managing Terraform-driven cloud infrastructure through declarative APIs, covering plan, approval, saved-plan apply, update, destroy, and lifecycle reconciliation workflows.
 
-  \item Applied reliability patterns including Transactional Outbox/Inbox, idempotency, retries, dead-letter queues, circuit breaking, and callback deduplication.
+  \item Implemented reliability and recovery mechanisms including controller restart recovery, idempotent reconciliation, finalizers, garbage collection, ResourceSet pruning, execution locking, and fail-closed infrastructure operations.
 
-\end{itemize}
-% ============================================================
-% AWARDS
-% ============================================================
-
-\section{\faTrophy\ Awards \& Recognition}
-
-\begin{itemize}[parsep=0.5ex, leftmargin=*]
-
-  \item Linux Foundation LiFT Scholarship Program Awardee (Spring 2026) -- Systems \& DevOps.
+  \item Validated the complete platform lifecycle locally using Kind and LocalStack, including multi-environment isolation, AWS IAM role assumption, encrypted state storage, Kubernetes runtime provisioning, and failure-recovery scenarios.
 
 \end{itemize}
 
-% ============================================================
-% CERTIFICATIONS
-% ============================================================
+\vspace{-0.1em}
 
-\section{\faCertificate\ Certifications}
+\datedsubsection
+{\textbf{bedrock-ops-agent -- Durable AI Incident Response Agent}}
+{In Development}
 
-\begin{itemize}[parsep=0.5ex, leftmargin=*]
+\begin{itemize}[
+  leftmargin=*,
+  itemsep=0.4ex,
+  topsep=0.4ex,
+  parsep=0ex
+]
 
-  \item AWS Certified Generative AI Developer -- Professional
+  \item Designing a durable AI incident-response workflow using Python, Temporal, Amazon Bedrock and AgentCore for multi-step diagnosis, tool execution, human approval, remediation, and post-action verification.
 
-  \item AWS Certified Solutions Architect -- Professional
+  \item Integrating MCP-based tools with durable workflow orchestration to support retries, crash recovery, idempotent side effects, approval-gated operations, and safe execution of long-running agent tasks.
 
-  \item HashiCorp Certified: Terraform Authoring and Operations Professional
-
-  \item Microsoft Certified: Azure Solutions Architect Expert
-
-  \item Certified Kubernetes Application Developer (CKAD)
-
-  \item Microsoft Certified: Azure Administrator Associate
-
-  \item AWS Certified Developer -- Associate
+  \item Designing observability and evaluation around agent execution, including workflow state, traces, tool calls, latency, token usage, failure recovery, and verification of remediation outcomes.
 
 \end{itemize}
-
-% ============================================================
-% EDUCATION
-% ============================================================
-
-\section{\faGraduationCap\ Education}
-
-\datedsubsection
-{\textbf{Yoobee College of Creative Innovation}}
-{04.2026 -- 04.2027}
-
-\textit{Master of Software Engineering}
-
-\vspace{-0.15em}
-
-\datedsubsection
-{\textbf{University of Technology Sydney}}
-{07.2020 -- 08.2021}
-
-\textit{Master of Engineering -- Software Systems Engineering}
-
-\vspace{-0.15em}
-
-\datedsubsection
-{\textbf{University of Technology Sydney}}
-{07.2019 -- 07.2020}
-
-\textit{BSc (Honours) in Information Technology -- First Class Honours}
-
-\vspace{-0.15em}
-
-\datedsubsection
-{\textbf{Nanjing University of Aeronautics and Astronautics}}
-{09.2016 -- 10.2020}
-
-\textit{Bachelor of Software Engineering}
-
-\end{document}
+```
