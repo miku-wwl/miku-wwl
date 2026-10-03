@@ -1,18 +1,6 @@
 observability，学一下  https://www.youtube.com/watch?v=cYAE0ZhT43c     然后去datadog learning ，学完。
 
-halter 的开源仓，，做一下超大项目，aws 大规模编排，，聊天已经置顶，，首先先是学习一下基础知识，，然后astra 上线之后，，重点设计。  kube-platform-control-plane Public 先用localstack 做到90% 生产级，然后最后再上AWS，节约经费。
 
 mcp的本地实现，练习一下。
-Go + Kubebuilder 最小 CRD 实战  这个学习一下。
-kube-platform-control-plane-advanced-design-v2.md ，，，kube-platform-control-plane 这个增强功能，部署完成之后，，你去补齐一下。
+Go + Kubebuilder 最小 CRD 实战  这个学习一下。  https://www.bilibili.com/video/BV14M4y1R7Qr/?p=2
 
-
-
-理解 → 设计 → Freeze → 实现 → 验证 → Harden → Freeze → 教程/学习材料
-可以，后续就按这个顺序：
-1. Temporal + AWS Bedrock AgentCore Demo
-   https://github.com/temporal-community/agentcore-with-temporal
-2. Temporal 官方 Python Samples
-   https://github.com/temporalio/samples-python
-3. Temporal Python SDK
-   https://github.com/temporalio/sdk-python
