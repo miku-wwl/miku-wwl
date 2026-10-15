@@ -1,5 +1,7 @@
 observability，学一下  https://www.youtube.com/watch?v=cYAE0ZhT43c     然后去datadog learning ，学完。
 
+Datadog AI Observability 免费实战（1–2天）：完成官方免费课程 [https://learn.datadoghq.com/collections/ai-observability](https://learn.datadoghq.com/collections/ai-observability) → 注册 Datadog Free → 使用 OpenTelemetry 接入本地 Ollama + phi4-mini → 学习 Agent/LLM/Tool Tracing、Token、Latency、Evaluation、故障排查 → 完成 AI Observability Dashboard。
+
 
 mcp的本地实现，练习一下。
 Go + Kubebuilder 最小 CRD 实战  这个学习一下。  https://www.bilibili.com/video/BV14M4y1R7Qr/?p=2
