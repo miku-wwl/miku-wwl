@@ -1,5 +1,9 @@
 observability，学一下  https://www.youtube.com/watch?v=cYAE0ZhT43c     然后去datadog learning ，学完。
 
+
+【6周 Harness Engineering → AI Platform Engineering 学习计划】每周投入 8–12 小时。Week 1–2：学习 Learn Claude Code（17讲），掌握 Agent Loop、Tools、Permissions、Context Compaction、Memory、MCP、Subagents，从零实现 Mini Harness；Week 3：学习 WalkingLabs Learn Harness Engineering（14讲+8项目），掌握状态管理、任务恢复、验证机制、Session Lifecycle；Week 4：学习 LangChain Academy Deep Agents，理解生产级 Agent Runtime、Sandbox、Checkpoint、Context Management；Week 5：学习 E2B + Firecracker + Kubernetes，实现 Harness 管理隔离 Sandbox 的完整生命周期；Week 6：学习 OpenTelemetry + Langfuse，完成 Agent Tracing、Metrics、Logs、Token/Cost Monitoring、Failure Injection 与 Evals。**毕业项目：cloud-native-agent-harness**，基于 Python/FastAPI + E2B + Kubernetes + OpenTelemetry，实现具备 Agent Loop、Context 管理、MCP、Policy/Approval、Sandbox 隔离、Checkpoint/Resume、Observability 和 CI Evals 的云原生 Agent 执行平台。最终交付 GitHub 开源仓库、架构图、部署文档、自动化测试和 E2E Demo。目标岗位：AI Platform Engineer / Agent Infrastructure Engineer / AI Platform SRE。
+
+
 Datadog AI Observability 免费实战（1–2天）：完成官方免费课程 [https://learn.datadoghq.com/collections/ai-observability](https://learn.datadoghq.com/collections/ai-observability) → 注册 Datadog Free → 使用 OpenTelemetry 接入本地 Ollama + phi4-mini → 学习 Agent/LLM/Tool Tracing、Token、Latency、Evaluation、故障排查 → 完成 AI Observability Dashboard。
 
 
